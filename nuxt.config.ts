@@ -3,9 +3,7 @@ import vuetify from 'vite-plugin-vuetify'
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: [
-    '@pinia/nuxt'
-  ],
+  modules: ['@pinia/nuxt', "@nuxtjs/i18n"],
   css: [
     'vuetify/styles',
     '@mdi/font/css/materialdesignicons.min.css',
