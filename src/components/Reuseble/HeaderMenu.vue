@@ -113,10 +113,10 @@
             >
               <img alt="chat" :src="icons.chats" />
               <div
-                  v-if="!!chatStore.getNotificationCount"
+                  v-if="!!notificationCount"
                   class="wrap__right--chat--notification"
               >
-                {{ chatStore.getNotificationCount }}
+                {{ notificationCount }}
               </div>
             </li>
           </ul>
@@ -158,7 +158,7 @@
                 </v-btn>
               </div>
             </div>
-            <div v-if="loginStore.userInfo !== undefined" class="switch">
+            <div v-if="userInfo !== undefined" class="switch">
               <p
                   :class="{ active: cookies.get('lang') === 'de' || defaultLang }"
                   data-lang="de"
@@ -175,7 +175,7 @@
                 En
               </p>
             </div>
-            <div v-if="loginStore.userInfo === undefined" class="switch">
+            <div v-if="userInfo === undefined" class="switch">
               <p
                   :class="{ active: cookies.get('lang') === 'de' || defaultLang }"
                   data-lang="de"
@@ -193,7 +193,7 @@
               </p>
             </div>
 
-            <div class="header__buttons" v-if="loginStore.userInfo === undefined">
+            <div class="header__buttons" v-if="userInfo === undefined">
               <NuxtLink to="/login">
                 <Button :text="$t('LogIn')" class="btn-header" name="white" type="button" />
               </NuxtLink>
@@ -207,24 +207,24 @@
                   <div class="header__login__info__profile-user" @click="toggleMenu">
                     <img :src="getCompanyLogo" alt="" class="header__login__info__avatar" />
                     <div class="header__login__info__user">
-                      <p>{{ loginStore.userInfo?.user.fullName }}</p>
-                      <p>{{ loginStore.userInfo?.user.email }}</p>
+                      <p>{{ userInfo.user.fullName }}</p>
+                      <p>{{ userInfo.user.email }}</p>
                     </div>
                   </div>
                   <ul :class="{ activeMenu: activeMenu }" class="header__login__info__menu">
                     <li class="header__login__info__profile-user" @click="toggleMenu">
                       <img :src="getCompanyLogo" alt="" class="header__login__info__avatar" />
                       <div class="header__login__info__user">
-                        <p>{{ loginStore.userInfo?.user.fullName }}</p>
-                        <p>{{ loginStore.userInfo?.user.email }}</p>
+                        <p>{{ userInfo.user.fullName }}</p>
+                        <p>{{ userInfo.user.email }}</p>
                       </div>
                     </li>
-                    <li v-if="loginStore.roleName === 'admin'">
+                    <li v-if="roleName === 'admin'">
                       <NuxtLink class="header__login__info__item" to="/dashboard">
                         <img alt="profile" src="~/assets/header/profile.svg" /><span>{{ $t('Profile') }}</span>
                       </NuxtLink>
                     </li>
-                    <li v-else-if="loginStore.roleName === 'super-admin'">
+                    <li v-else-if="roleName === 'super-admin'">
                       <NuxtLink class="header__login__info__item" to="/dashboard">
                         <img alt="profile" src="~/assets/header/profile.svg" /><span>{{ $t('Profile') }}</span>
                       </NuxtLink>
@@ -241,7 +241,7 @@
                     </li>
 
                     <li
-                        v-if="loginStore.roleName === 'company-admin' && loginStore.isHasPersonalProfile"
+                        v-if="roleName === 'company-admin' && isHasPersonalProfile"
                         @click="loginAs"
                     >
                       <NuxtLink class="header__login__info__item" to="/">
@@ -249,7 +249,7 @@
                       </NuxtLink>
                     </li>
 
-                    <li v-if="loginStore.roleName === 'customer' && loginStore.isHasCompanyProfile" @click="loginAs">
+                    <li v-if="roleName === 'customer' && isHasCompanyProfile" @click="loginAs">
                       <NuxtLink class="header__login__info__item" to="/">
                         <img alt="login-as" src="~/assets/header/go-to.svg" /><span>{{ $t('Company Account') }}</span>
                       </NuxtLink>
@@ -291,7 +291,7 @@
             <img alt="logo" src="~/assets/logo-mobile.svg" />
           </NuxtLink>
         </div>
-        <div v-if="loginStore.userInfo === undefined" class="header-mobile__info">
+        <div v-if="userInfo === undefined" class="header-mobile__info">
           <NuxtLink v-if="!mobileMenu" :to="{ name: 'login' }">Log in</NuxtLink>
           <div v-if="mobileMenu" class="switch-mobile">
             <p :class="{ active: cookies.get('lang') === 'de' || defaultLang }" data-lang="de" @click="langSwitch('de')">
@@ -320,20 +320,20 @@
 
           <div v-if="isNotificationShow" class="wrap__right--chat" @click="goToChat(true)">
             <img :src="icons.chats" alt="chat" />
-            <div v-if="!!chatStore.getNotificationCount" class="wrap__right--chat--notification">
-              {{ chatStore.getNotificationCount }}
+            <div v-if="!!notificationCount" class="wrap__right--chat--notification">
+              {{ notificationCount }}
             </div>
           </div>
         </div>
       </div>
       <div v-show="mobileMenu" class="header-mobile__sub-menu">
         <div class="container">
-          <div v-if="loginStore.userInfo !== undefined" class="wrap-mobile-user">
+          <div v-if="userInfo !== undefined" class="wrap-mobile-user">
             <div class="header__login__info__profile-user" @click="switchToProfile">
               <img :src="getCompanyLogo" alt="" class="header__login__info__avatar" />
               <div class="header__login__info__user">
-                <p>{{ loginStore.userInfo?.user.fullName }}</p>
-                <p>{{ loginStore.userInfo?.user.email }}</p>
+                <p>{{ userInfo.user.fullName }}</p>
+                <p>{{ userInfo.user.email }}</p>
               </div>
             </div>
             <button v-if="mobileMenu" class="mobile-logout" @click="logOut">
@@ -341,13 +341,13 @@
             </button>
           </div>
           <div v-if="mobileMenu" class="mt-4 login-as-block">
-            <div v-if="loginStore.roleName === 'company-admin' && loginStore.isHasPersonalProfile" @click="loginAs">
+            <div v-if="roleName === 'company-admin' && isHasPersonalProfile" @click="loginAs">
               <div class="login-as">
                 <img alt="logout" src="~/assets/header/go-to.svg" /><span>{{ $t('Personal Profile') }}</span>
               </div>
             </div>
 
-            <div v-if="loginStore.roleName === 'customer' && loginStore.isHasCompanyProfile" @click="loginAs">
+            <div v-if="roleName === 'customer' && isHasCompanyProfile" @click="loginAs">
               <div class="login-as">
                 <img alt="logout" src="~/assets/header/go-to.svg" /><span>{{ $t('Company Account') }}</span>
               </div>
@@ -406,18 +406,18 @@
 </template>
 
 <script>
-import { useCookies } from 'vue3-cookies'
+import { useCookies } from 'vue3-cookies';
 import Container from "~/src/components/Reuseble/Container.vue";
-import Button from '~/src/components/Reuseble/Button.vue'
-import { useI18n } from 'vue-i18n'
-import { useLogin } from '~/stores/loginStore'
-import { companyEvent, companyName, useCompanyStore } from '~/stores/companyStore'
-import AnimationBlock from '~/src/components/Reuseble/AnimationBlock.vue'
-import { useChatStore } from '~/stores/chatStore'
-import chats from '~/assets/company/chats.svg'
+import Button from '~/src/components/Reuseble/Button.vue';
+import { useI18n } from 'vue-i18n';
+// import { useLogin } from '~/stores/loginStore';
+// import { companyEvent, companyName, useCompanyStore } from '~/stores/companyStore';
+import AnimationBlock from '~/src/components/Reuseble/AnimationBlock.vue';
+// import { useChatStore } from '~/stores/chatStore';
+import chats from '~/assets/company/chats.svg';
 import lensGreen from '~/assets/chat/lens-green.svg';
 
-const { cookies } = useCookies()
+const { cookies } = useCookies();
 
 export default {
   name: 'HeaderMenu',
@@ -426,22 +426,22 @@ export default {
     return {
       icons: {
         chats,
-        lensGreen
+        lensGreen,
       },
       show: false,
       defaultLang: true,
-      companyStore: useCompanyStore(),
-      chatStore: useChatStore(),
+      // companyStore: useCompanyStore(),
+      // chatStore: useChatStore(),
       mobileMenu: false,
       activeMenu: false,
       items: undefined,
-      loginStore: useLogin(),
+      // loginStore: useLogin(),
       cookies: cookies,
       activeIndex: null,
       landSwitch: 'en',
       companyData: {},
       locale: useI18n({
-        useScope: 'global'
+        useScope: 'global',
       }),
 
       baseItem: {
@@ -450,19 +450,19 @@ export default {
           {
             url: 'about-us',
             title: `${ this.$t('AboutUs') }`,
-            text: `${ this.$t('AboutUsDescr') }`
+            text: `${ this.$t('AboutUsDescr') }`,
           },
           {
             url: 'faq',
             title: 'FAQ',
-            text: `${ this.$t('FAQDescr') }`
+            text: `${ this.$t('FAQDescr') }`,
           },
           {
             url: 'contact-us',
             title: `${ this.$t('Contact') }`,
-            text: `${ this.$t('ContactDescr') }`
-          }
-        ]
+            text: `${ this.$t('ContactDescr') }`,
+          },
+        ],
       },
       nameOfHeader: [
         {
@@ -473,14 +473,14 @@ export default {
             {
               url: 'offers-list',
               title: `${ this.$t('FindCustomers') }`,
-              text: `${ this.$t('FindCustomersDescr') }`
+              text: `${ this.$t('FindCustomersDescr') }`,
             },
             {
               url: 'profile-data',
               title: `${ this.$t('FillProfile') }`,
-              text: `${ this.$t('FillProfileDescr') }`
-            }
-          ]
+              text: `${ this.$t('FillProfileDescr') }`,
+            },
+          ],
         },
         {
           id: 2,
@@ -490,14 +490,14 @@ export default {
             {
               url: 'user-request-send',
               title: `${ this.$t('FindCompanies') }`,
-              text: `${ this.$t('FindCompaniesDescr') }`
+              text: `${ this.$t('FindCompaniesDescr') }`,
             },
             {
               url: 'user-offers',
               title: `${ this.$t('MakeRequest') }`,
-              text: `${ this.$t('MakeRequestDescr') }`
-            }
-          ]
+              text: `${ this.$t('MakeRequestDescr') }`,
+            },
+          ],
         },
         {
           id: 1,
@@ -507,19 +507,19 @@ export default {
             {
               url: 'about-us',
               title: `${ this.$t('AboutUs') }`,
-              text: `${ this.$t('AboutUsDescr') }`
+              text: `${ this.$t('AboutUsDescr') }`,
             },
             {
               url: 'faq',
               title: 'FAQ',
-              text: `${ this.$t('FAQDescr') }`
+              text: `${ this.$t('FAQDescr') }`,
             },
             {
               url: 'contact-us',
               title: `${ this.$t('Contact') }`,
-              text: `${ this.$t('ContactDescr') }`
-            }
-          ]
+              text: `${ this.$t('ContactDescr') }`,
+            },
+          ],
         },
         {
           id: 0,
@@ -529,168 +529,180 @@ export default {
             {
               url: 'user-request-send',
               title: `${ this.$t('FindCompanies') }`,
-              text: `${ this.$t('FindCompaniesDescr') }`
-            }
-          ]
-        }
+              text: `${ this.$t('FindCompaniesDescr') }`,
+            },
+          ],
+        },
       ],
       is_company: false,
       searchString: '',
       isSearchOpened: false,
-    }
+      notificationCount: 1, // Temporary hardcoded value
+      userInfo: {
+        user: {
+          fullName: 'John Doe',
+          email: 'john.doe@example.com',
+          companyLogo: '~/assets/company/logo.svg'
+        }
+      }, // Temporary hardcoded value
+      roleName: 'customer', // Temporary hardcoded value
+      isHasPersonalProfile: true, // Temporary hardcoded value
+      isHasCompanyProfile: true // Temporary hardcoded value
+    };
   },
   computed: {
     isNotificationShow() {
-      return this.loginStore.userInfo?.user?.roleName === 'customer' || this.loginStore.userInfo?.user?.roleName === 'company-admin';
+      // return this.userInfo?.user?.roleName === 'customer' || this.userInfo?.user?.roleName === 'company-admin';
+      return true; // Temporary hardcoded value
     },
     getCompanyLogo() {
-      return this.loginStore.getCompanyLogo ||
-          this.companyData.logo ||
-          this.loginStore.userInfo?.user.companyLogo ||
-          this.loginStore.userInfo?.user.avatar;
+      // return this.userInfo?.user.companyLogo || this.userInfo?.user.avatar;
+      return '/assets/company/logo-company.svg'; // Temporary hardcoded value
     },
   },
   async mounted() {
-    this.changeLang()
-    if (this.loginStore.roleName === 'company-admin') {
-      await this.companyStore.getInfo()
-    }
-    if (this.loginStore.userInfo?.user !== undefined) {
-      this.items = this.nameOfHeader.find(
-          (id) => id.name === this.loginStore.roleName
-      )
-    } else {
-      this.items = this.nameOfHeader.find(id => id.name === 'customer-not-login')
-    }
+    this.changeLang();
+    // if (this.roleName === 'company-admin') {
+    //   await this.companyStore.getInfo();
+    // }
+    // if (this.userInfo?.user !== undefined) {
+    //   this.items = this.nameOfHeader.find(
+    //     (id) => id.name === this.roleName
+    //   );
+    // } else {
+    //   this.items = this.nameOfHeader.find(id => id.name === 'customer-not-login');
+    // }
+    this.items = this.nameOfHeader.find(id => id.name === 'customer-not-login'); // Temporary hardcoded value
 
     const onClick = (event) => {
       if (!(this.$el === event.target || this.$el.contains(event.target))) {
-        this.activeMenu = false
-        this.activeIndex = null
+        this.activeMenu = false;
+        this.activeIndex = null;
       }
-    }
+    };
 
-    document.addEventListener('click', onClick)
-    this.clickOutsideEvent = onClick
+    document.addEventListener('click', onClick);
+    this.clickOutsideEvent = onClick;
   },
-  created() {
-    this.is_company = (this.loginStore.userInfo?.user?.roleName === 'company-admin'
-        || this.loginStore.userInfo?.user?.roleName === 'super-admin'
-        || this.loginStore.userInfo?.user?.roleName === 'admin')
-    if (this.loginStore.roleName === 'company-admin') {
-      companyEvent.subscribe(companyName.getInfo, this.seeCompanyInfo)
-    }
-  },
-  beforeUnmount() {
-    if (this.loginStore.roleName === 'company-admin') {
-      companyEvent.unsubscribe(companyName.getInfo, this.seeCompanyInfo)
-    }
-    document.removeEventListener('click', this.clickOutsideEvent)
-  },
+  // created() {
+  //   this.is_company = (this.userInfo?.user?.roleName === 'company-admin'
+  //     || this.userInfo?.user?.roleName === 'super-admin'
+  //     || this.userInfo?.user?.roleName === 'admin');
+  //   if (this.roleName === 'company-admin') {
+  //     companyEvent.subscribe(companyName.getInfo, this.seeCompanyInfo);
+  //   }
+  // },
+  // beforeUnmount() {
+  //   if (this.roleName === 'company-admin') {
+  //     companyEvent.unsubscribe(companyName.getInfo, this.seeCompanyInfo);
+  //   }
+  //   document.removeEventListener('click', this.clickOutsideEvent);
+  // },
   methods: {
     goToProfile() {
-      if (this.loginStore.roleName === 'customer') {
-        this.$router.push({ path: '/user-data' })
-      }
-      if ( this.loginStore.roleName === "super-admin") {
-        this.$router.push({ path: '/dashboard' })
-      }
-      if (this.loginStore.roleName === "company-admin"){
-        this.$router.push({ path: '/profile-data' })
-      }
+      // if (this.roleName === 'customer') {
+      //   this.$router.push({ path: '/user-data' });
+      // }
+      // if (this.roleName === "super-admin") {
+      //   this.$router.push({ path: '/dashboard' });
+      // }
+      // if (this.roleName === "company-admin") {
+      //   this.$router.push({ path: '/profile-data' });
+      // }
+      this.$router.push({ path: '/user-data' }); // Temporary hardcoded value
     },
     goToChat(isMobile) {
-      if (this.loginStore.roleName === 'customer') {
-        this.$router.push({ path: '/user-chat' })
-        return
-      }
+      // if (this.roleName === 'customer') {
+      //   this.$router.push({ path: '/user-chat' });
+      //   return;
+      // }
       this.$router.push({ path: `/chat${isMobile ? '/:true?' : ''}` });
     },
     changeLang() {
       if (cookies.get('lang') === 'de') {
-        this.defaultLang = false
+        this.defaultLang = false;
       } else if (cookies.get('lang') === 'en') {
-        this.defaultLang = false
+        this.defaultLang = false;
       } else {
-        this.defaultLang = true
+        this.defaultLang = true;
       }
     },
     langSwitch(selectedLang) {
-      this.show = true
+      this.show = true;
       if (this.defaultLang === true) {
-        this.defaultLang = false
+        this.defaultLang = false;
       }
-      cookies.set('lang', selectedLang)
+      cookies.set('lang', selectedLang);
 
-      window.location.reload()
+      window.location.reload();
     },
-    async loginAs() {
-      if (this.loginStore.roleName === 'customer') {
-        await this.loginStore.loginAsCompany()
-        await this.$router.push({path: '/profile-data'})
-        window.location.reload()
-      } else if (this.loginStore.roleName === 'company-admin') {
-        await this.loginStore.loginAsCustomer()
-        await this.$router.push({path: '/user-data'})
-        window.location.reload()
-      }
-    },
-    logOut() {
-      this.loginStore.logout()
-      this.items = this.nameOfHeader.find(id => id.name === 'customer-not-login')
+    // async loginAs() {
+    //   if (this.roleName === 'customer') {
+    //     await this.loginAsCompany();
+    //     await this.$router.push({ path: '/profile-data' });
+    //     window.location.reload();
+    //   } else if (this.roleName === 'company-admin') {
+    //     await this.loginAsCustomer();
+    //     await this.$router.push({ path: '/user-data' });
+    //     window.location.reload();
+    //   }
+    // },
+    // logOut() {
+    //   this.logout();
+    //   this.items = this.nameOfHeader.find(id => id.name === 'customer-not-login');
 
-      this.mobileMenu = false
-      if (window.innerWidth < 768) {
-        document.body.style.overflow = 'visible'
-      }
-    },
+    //   this.mobileMenu = false;
+    //   if (window.innerWidth < 768) {
+    //     document.body.style.overflow = 'visible';
+    //   }
+    // },
     openMobileMenu() {
       if (this.mobileMenu === false) {
-        this.mobileMenu = !this.mobileMenu
-        document.body.style.overflow = 'hidden'
+        this.mobileMenu = !this.mobileMenu;
+        document.body.style.overflow = 'hidden';
       } else {
-        this.mobileMenu = !this.mobileMenu
-        document.body.style.overflow = 'visible'
+        this.mobileMenu = !this.mobileMenu;
+        document.body.style.overflow = 'visible';
       }
     },
-    switchToProfile() {
-      if (this.loginStore.userInfo?.user.roleName === 'company-admin') {
-        this.$router.push('profile-data')
-      } else if ( this.loginStore.userInfo?.user.roleName === 'super-admin') {
-        this.$router.push('dashboard')
-      } else if (this.loginStore.userInfo?.user.roleName === 'admin') {
-        this.$router.push('dashboard')
-      } else {
-        this.$router.push('user-data')
-      }
-      document.body.style.overflow = 'visible'
-    },
+    // switchToProfile() {
+    //   if (this.userInfo?.user.roleName === 'company-admin') {
+    //     this.$router.push('profile-data');
+    //   } else if (this.userInfo?.user.roleName === 'super-admin') {
+    //     this.$router.push('dashboard');
+    //   } else if (this.userInfo?.user.roleName === 'admin') {
+    //     this.$router.push('dashboard');
+    //   } else {
+    //     this.$router.push('user-data');
+    //   }
+    //   document.body.style.overflow = 'visible';
+    // },
     closeMenu() {
-      this.mobileMenu = false
-      document.body.style.overflow = 'visible'
+      this.mobileMenu = false;
+      document.body.style.overflow = 'visible';
     },
     toggleMenu() {
       if (this.activeMenu === true) {
-        this.activeMenu = false
+        this.activeMenu = false;
       } else {
-        this.activeMenu = true
-        this.activeIndex = null
+        this.activeMenu = true;
+        this.activeIndex = null;
       }
     },
     setActive(index) {
       if (this.activeIndex === index) {
-        this.activeIndex = null
+        this.activeIndex = null;
       } else {
-        this.activeIndex = index
-        this.activeMenu = false
+        this.activeIndex = index;
+        this.activeMenu = false;
       }
     },
-    seeCompanyInfo(data) {
-      if (data instanceof Error) {
-        return
-      }
-      this.companyData = data
-    },
+    // seeCompanyInfo(data) {
+    //   if (data instanceof Error) {
+    //     return;
+    //   }
+    //   this.companyData = data;
+    // },
     openSearch() {
       this.isSearchOpened = true;
       this.$nextTick(() => this.$refs.search.focus());
@@ -707,8 +719,8 @@ export default {
     async searchCompany() {
       if (this.searchString) {
         await this.$router.replace('/user-request-send?search=' + this.searchString);
-        location.reload()
-        this.searchString = ''
+        location.reload();
+        this.searchString = '';
         this.isSearchOpened = false;
       }
     },
@@ -716,13 +728,13 @@ export default {
       if (this.searchString) {
         this.closeMenu();
         await this.$router.replace('/user-request-send?search=' + this.searchString);
-        location.reload()
-        this.searchString = ''
+        location.reload();
+        this.searchString = '';
         this.isSearchOpened = false;
       }
     },
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>
