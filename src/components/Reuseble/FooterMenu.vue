@@ -4,7 +4,7 @@
       <div class="footer">
         <ul class="footer__lists">
           <li class="footer__contact">
-            <img src="@/assets/logo.svg" alt="logo" />
+            <img src="@/assets/logo.svg" alt="logo"/>
             <router-link to="/contact-us">
               Green Technology Germany GmbH
             </router-link>
@@ -43,12 +43,12 @@
 
 <script setup>
 //import { useLogin } from "@/stores/loginStore";
-import { ref, watchEffect } from 'vue';
-import { useI18n } from 'vue-i18n';
+import {ref, watchEffect} from 'vue';
+import {useI18n} from 'vue-i18n';
 import Container from "~/src/components/Reuseble/Container.vue";
 
 //const loginStore = useLogin();
-const loginStore ={}
+const loginStore = {}
 loginStore.roleName == "super-admin"
 const items = ref([]);
 const i18n = useI18n();
@@ -296,6 +296,7 @@ watchEffect(() => {
 
 <style lang="scss" scoped>
 @import "@/assets/styles/main.scss";
+
 #footer {
   background-color: rgba(29, 29, 41, 0.9);
   background-image: url(@/assets/footer-bg.png);
@@ -315,10 +316,12 @@ watchEffect(() => {
     gap: 40px;
     text-align: center;
   }
+
   &__contact {
     img {
       margin-bottom: 32px;
     }
+
     a {
       display: block;
       color: #9898a0;
@@ -332,6 +335,7 @@ watchEffect(() => {
       }
     }
   }
+
   &__lists {
     @include flex(row, space-between, start);
     width: 100%;
@@ -342,6 +346,7 @@ watchEffect(() => {
       gap: 40px;
     }
   }
+
   &__list {
     h4 {
       display: inline-block;
@@ -365,6 +370,7 @@ watchEffect(() => {
           text-align: center;
         }
       }
+
       span {
         display: block;
         width: 25px;
@@ -377,9 +383,11 @@ watchEffect(() => {
         }
       }
     }
+
     ul > li:not(:last-child) {
       margin-bottom: 6px;
     }
+
     ul > li > a {
       color: #9898a0;
       font-family: $font-main;
@@ -392,14 +400,17 @@ watchEffect(() => {
     }
   }
 }
+
 .description {
   padding: 16px 0 15px 0;
   background: #1d1d29;
+
   &__wrap {
     text-align: center;
     @media (max-width: 991px) {
       @include flex(row, space-between, center);
     }
+
     p {
       color: #9898a0;
       font-family: $font-main;
@@ -411,6 +422,7 @@ watchEffect(() => {
         font-size: 10px;
       }
     }
+
     p:last-child {
       display: none;
       @media (max-width: 991px) {
