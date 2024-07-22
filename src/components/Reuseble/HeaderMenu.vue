@@ -4,7 +4,7 @@
       <nav class="header">
         <div class="header__logo">
           <NuxtLink to="/">
-            <img alt="logo" src="~/assets/logo.svg" />
+            <img alt="logo" src="~/assets/logo.svg"/>
           </NuxtLink>
         </div>
         <div class="wrap">
@@ -34,7 +34,7 @@
                     </g>
                     <defs>
                       <clipPath id="clip0_1_2735">
-                        <rect fill="white" height="24" width="24" />
+                        <rect fill="white" height="24" width="24"/>
                       </clipPath>
                     </defs>
                   </svg>
@@ -82,7 +82,7 @@
                     </g>
                     <defs>
                       <clipPath id="clip0_1_2735">
-                        <rect fill="white" height="24" width="24" />
+                        <rect fill="white" height="24" width="24"/>
                       </clipPath>
                     </defs>
                   </svg>
@@ -111,7 +111,7 @@
                 class="wrap__right--chat"
                 @click="goToChat"
             >
-              <img alt="chat" :src="icons.chats" />
+              <img alt="chat" :src="icons.chats"/>
               <div
                   v-if="!!notificationCount"
                   class="wrap__right--chat--notification"
@@ -140,7 +140,7 @@
                     autofocus="search"
                 >
                   <template v-slot:prepend-inner>
-                    <img alt="lens" :src="icons.lensGreen" />
+                    <img alt="lens" :src="icons.lensGreen"/>
                   </template>
                   <template v-slot:append-inner>
                     <v-icon @click="clearSearch">mdi-close</v-icon>
@@ -154,7 +154,7 @@
                     density="compact"
                     @click="openSearch"
                 >
-                  <img alt="lens" :src="icons.lensGreen" />
+                  <img alt="lens" :src="icons.lensGreen"/>
                 </v-btn>
               </div>
             </div>
@@ -195,17 +195,17 @@
 
             <div class="header__buttons" v-if="userInfo === undefined">
               <NuxtLink to="/login">
-                <Button :text="$t('LogIn')" class="btn-header" name="white" type="button" />
+                <Button :text="$t('LogIn')" class="btn-header" name="white" type="button"/>
               </NuxtLink>
               <NuxtLink to="/register">
-                <Button :text="$t('SignIn')" class="btn-header" name="green" type="button" />
+                <Button :text="$t('SignIn')" class="btn-header" name="green" type="button"/>
               </NuxtLink>
             </div>
             <div v-else>
               <div class="header__login__info">
                 <div class="header__login__info__profile">
                   <div class="header__login__info__profile-user" @click="toggleMenu">
-                    <img :src="getCompanyLogo" alt="" class="header__login__info__avatar" />
+                    <img :src="getCompanyLogo" alt="" class="header__login__info__avatar"/>
                     <div class="header__login__info__user">
                       <p>{{ userInfo.user.fullName }}</p>
                       <p>{{ userInfo.user.email }}</p>
@@ -213,7 +213,7 @@
                   </div>
                   <ul :class="{ activeMenu: activeMenu }" class="header__login__info__menu">
                     <li class="header__login__info__profile-user" @click="toggleMenu">
-                      <img :src="getCompanyLogo" alt="" class="header__login__info__avatar" />
+                      <img :src="getCompanyLogo" alt="" class="header__login__info__avatar"/>
                       <div class="header__login__info__user">
                         <p>{{ userInfo.user.fullName }}</p>
                         <p>{{ userInfo.user.email }}</p>
@@ -221,22 +221,22 @@
                     </li>
                     <li v-if="roleName === 'admin'">
                       <NuxtLink class="header__login__info__item" to="/dashboard">
-                        <img alt="profile" src="~/assets/header/profile.svg" /><span>{{ $t('Profile') }}</span>
+                        <img alt="profile" src="~/assets/header/profile.svg"/><span>{{ $t('Profile') }}</span>
                       </NuxtLink>
                     </li>
                     <li v-else-if="roleName === 'super-admin'">
                       <NuxtLink class="header__login__info__item" to="/dashboard">
-                        <img alt="profile" src="~/assets/header/profile.svg" /><span>{{ $t('Profile') }}</span>
+                        <img alt="profile" src="~/assets/header/profile.svg"/><span>{{ $t('Profile') }}</span>
                       </NuxtLink>
                     </li>
                     <li v-else-if="!is_company">
                       <NuxtLink class="header__login__info__item" to="/user-profile">
-                        <img alt="profile" src="~/assets/header/profile.svg" /><span>{{ $t('Profile') }}</span>
+                        <img alt="profile" src="~/assets/header/profile.svg"/><span>{{ $t('Profile') }}</span>
                       </NuxtLink>
                     </li>
                     <li v-else>
                       <NuxtLink class="header__login__info__item" to="/profile">
-                        <img alt="profile" src="~/assets/header/profile.svg" /><span>{{ $t('Profile') }}</span>
+                        <img alt="profile" src="~/assets/header/profile.svg"/><span>{{ $t('Profile') }}</span>
                       </NuxtLink>
                     </li>
 
@@ -245,19 +245,19 @@
                         @click="loginAs"
                     >
                       <NuxtLink class="header__login__info__item" to="/">
-                        <img alt="login-as" src="~/assets/header/go-to.svg" /><span>{{ $t('Personal Profile') }}</span>
+                        <img alt="login-as" src="~/assets/header/go-to.svg"/><span>{{ $t('Personal Profile') }}</span>
                       </NuxtLink>
                     </li>
 
                     <li v-if="roleName === 'customer' && isHasCompanyProfile" @click="loginAs">
                       <NuxtLink class="header__login__info__item" to="/">
-                        <img alt="login-as" src="~/assets/header/go-to.svg" /><span>{{ $t('Company Account') }}</span>
+                        <img alt="login-as" src="~/assets/header/go-to.svg"/><span>{{ $t('Company Account') }}</span>
                       </NuxtLink>
                     </li>
 
                     <li @click="logOut">
                       <NuxtLink class="header__login__info__item" to="/">
-                        <img alt="logout" src="~/assets/header/logout.svg" /><span>{{ $t('LogOut') }}</span>
+                        <img alt="logout" src="~/assets/header/logout.svg"/><span>{{ $t('LogOut') }}</span>
                       </NuxtLink>
                     </li>
                   </ul>
@@ -288,13 +288,14 @@
         </button>
         <div class="header-mobile__logo">
           <NuxtLink to="/">
-            <img alt="logo" src="~/assets/logo-mobile.svg" />
+            <img alt="logo" src="~/assets/logo-mobile.svg"/>
           </NuxtLink>
         </div>
         <div v-if="userInfo === undefined" class="header-mobile__info">
           <NuxtLink v-if="!mobileMenu" :to="{ name: 'login' }">Log in</NuxtLink>
           <div v-if="mobileMenu" class="switch-mobile">
-            <p :class="{ active: cookies.get('lang') === 'de' || defaultLang }" data-lang="de" @click="langSwitch('de')">
+            <p :class="{ active: cookies.get('lang') === 'de' || defaultLang }" data-lang="de"
+               @click="langSwitch('de')">
               De
             </p>
             <p>/</p>
@@ -303,7 +304,8 @@
         </div>
         <div v-else class="header-mobile__info">
           <div v-if="mobileMenu" class="switch-mobile">
-            <p :class="{ active: cookies.get('lang') === 'de' || defaultLang }" data-lang="de" @click="langSwitch('de')">
+            <p :class="{ active: cookies.get('lang') === 'de' || defaultLang }" data-lang="de"
+               @click="langSwitch('de')">
               De
             </p>
             <p>/</p>
@@ -319,7 +321,7 @@
           />
 
           <div v-if="isNotificationShow" class="wrap__right--chat" @click="goToChat(true)">
-            <img :src="icons.chats" alt="chat" />
+            <img :src="icons.chats" alt="chat"/>
             <div v-if="!!notificationCount" class="wrap__right--chat--notification">
               {{ notificationCount }}
             </div>
@@ -330,7 +332,7 @@
         <div class="container">
           <div v-if="userInfo !== undefined" class="wrap-mobile-user">
             <div class="header__login__info__profile-user" @click="switchToProfile">
-              <img :src="getCompanyLogo" alt="" class="header__login__info__avatar" />
+              <img :src="getCompanyLogo" alt="" class="header__login__info__avatar"/>
               <div class="header__login__info__user">
                 <p>{{ userInfo.user.fullName }}</p>
                 <p>{{ userInfo.user.email }}</p>
@@ -343,13 +345,13 @@
           <div v-if="mobileMenu" class="mt-4 login-as-block">
             <div v-if="roleName === 'company-admin' && isHasPersonalProfile" @click="loginAs">
               <div class="login-as">
-                <img alt="logout" src="~/assets/header/go-to.svg" /><span>{{ $t('Personal Profile') }}</span>
+                <img alt="logout" src="~/assets/header/go-to.svg"/><span>{{ $t('Personal Profile') }}</span>
               </div>
             </div>
 
             <div v-if="roleName === 'customer' && isHasCompanyProfile" @click="loginAs">
               <div class="login-as">
-                <img alt="logout" src="~/assets/header/go-to.svg" /><span>{{ $t('Company Account') }}</span>
+                <img alt="logout" src="~/assets/header/go-to.svg"/><span>{{ $t('Company Account') }}</span>
               </div>
             </div>
           </div>
@@ -371,7 +373,7 @@
                   v-on:keyup.enter="searchCompanyMobile"
               >
                 <template v-slot:prepend-inner>
-                  <img alt="lens" :src="icons.lensGreen" />
+                  <img alt="lens" :src="icons.lensGreen"/>
                 </template>
                 <template v-slot:append-inner>
                   <v-icon @click="clearSearch">mdi-close</v-icon>
@@ -401,15 +403,15 @@
         </div>
       </div>
     </Container>
-    <animation-block v-if="show" :show="show" class="loader-lang" />
+    <animation-block v-if="show" :show="show" class="loader-lang"/>
   </header>
 </template>
 
 <script>
-import { useCookies } from 'vue3-cookies';
+import {useCookies} from 'vue3-cookies';
 import Container from "~/src/components/Reuseble/Container.vue";
 import Button from '~/src/components/Reuseble/Button.vue';
-import { useI18n } from 'vue-i18n';
+import {useI18n} from 'vue-i18n';
 // import { useLogin } from '~/stores/loginStore';
 // import { companyEvent, companyName, useCompanyStore } from '~/stores/companyStore';
 import AnimationBlock from '~/src/components/Reuseble/AnimationBlock.vue';
@@ -417,11 +419,11 @@ import AnimationBlock from '~/src/components/Reuseble/AnimationBlock.vue';
 import chats from '~/assets/company/chats.svg';
 import lensGreen from '~/assets/chat/lens-green.svg';
 
-const { cookies } = useCookies();
+const {cookies} = useCookies();
 
 export default {
   name: 'HeaderMenu',
-  components: { AnimationBlock, Button, Container },
+  components: {AnimationBlock, Button, Container},
   data() {
     return {
       icons: {
@@ -445,22 +447,22 @@ export default {
       }),
 
       baseItem: {
-        title: `${ this.$t('WhyGTG') }`,
+        title: `${this.$t('WhyGTG')}`,
         list: [
           {
             url: 'about-us',
-            title: `${ this.$t('AboutUs') }`,
-            text: `${ this.$t('AboutUsDescr') }`,
+            title: `${this.$t('AboutUs')}`,
+            text: `${this.$t('AboutUsDescr')}`,
           },
           {
             url: 'faq',
             title: 'FAQ',
-            text: `${ this.$t('FAQDescr') }`,
+            text: `${this.$t('FAQDescr')}`,
           },
           {
             url: 'contact-us',
-            title: `${ this.$t('Contact') }`,
-            text: `${ this.$t('ContactDescr') }`,
+            title: `${this.$t('Contact')}`,
+            text: `${this.$t('ContactDescr')}`,
           },
         ],
       },
@@ -468,68 +470,68 @@ export default {
         {
           id: 3,
           name: 'company-admin',
-          title: `${ this.$t('FindOffers') }`,
+          title: `${this.$t('FindOffers')}`,
           list: [
             {
               url: 'offers-list',
-              title: `${ this.$t('FindCustomers') }`,
-              text: `${ this.$t('FindCustomersDescr') }`,
+              title: `${this.$t('FindCustomers')}`,
+              text: `${this.$t('FindCustomersDescr')}`,
             },
             {
               url: 'profile-data',
-              title: `${ this.$t('FillProfile') }`,
-              text: `${ this.$t('FillProfileDescr') }`,
+              title: `${this.$t('FillProfile')}`,
+              text: `${this.$t('FillProfileDescr')}`,
             },
           ],
         },
         {
           id: 2,
           name: 'customer',
-          title: `${ this.$t('FindCompanies') }`,
+          title: `${this.$t('FindCompanies')}`,
           list: [
             {
               url: 'user-request-send',
-              title: `${ this.$t('FindCompanies') }`,
-              text: `${ this.$t('FindCompaniesDescr') }`,
+              title: `${this.$t('FindCompanies')}`,
+              text: `${this.$t('FindCompaniesDescr')}`,
             },
             {
               url: 'user-offers',
-              title: `${ this.$t('MakeRequest') }`,
-              text: `${ this.$t('MakeRequestDescr') }`,
+              title: `${this.$t('MakeRequest')}`,
+              text: `${this.$t('MakeRequestDescr')}`,
             },
           ],
         },
         {
           id: 1,
           name: 'super-admin',
-          title: `${ this.$t('WhyGTG') }`,
+          title: `${this.$t('WhyGTG')}`,
           list: [
             {
               url: 'about-us',
-              title: `${ this.$t('AboutUs') }`,
-              text: `${ this.$t('AboutUsDescr') }`,
+              title: `${this.$t('AboutUs')}`,
+              text: `${this.$t('AboutUsDescr')}`,
             },
             {
               url: 'faq',
               title: 'FAQ',
-              text: `${ this.$t('FAQDescr') }`,
+              text: `${this.$t('FAQDescr')}`,
             },
             {
               url: 'contact-us',
-              title: `${ this.$t('Contact') }`,
-              text: `${ this.$t('ContactDescr') }`,
+              title: `${this.$t('Contact')}`,
+              text: `${this.$t('ContactDescr')}`,
             },
           ],
         },
         {
           id: 0,
           name: 'customer-not-login',
-          title: `${ this.$t('FindCompanies') }`,
+          title: `${this.$t('FindCompanies')}`,
           list: [
             {
               url: 'user-request-send',
-              title: `${ this.$t('FindCompanies') }`,
-              text: `${ this.$t('FindCompaniesDescr') }`,
+              title: `${this.$t('FindCompanies')}`,
+              text: `${this.$t('FindCompaniesDescr')}`,
             },
           ],
         },
@@ -609,16 +611,17 @@ export default {
       // if (this.roleName === "company-admin") {
       //   this.$router.push({ path: '/profile-data' });
       // }
-      this.$router.push({ path: '/user-data' }); // Temporary hardcoded value
+      this.$router.push({path: '/user-data'}); // Temporary hardcoded value
     },
     goToChat(isMobile) {
       // if (this.roleName === 'customer') {
       //   this.$router.push({ path: '/user-chat' });
       //   return;
       // }
-      this.$router.push({ path: `/chat${isMobile ? '/:true?' : ''}` });
+      this.$router.push({path: `/chat${isMobile ? '/:true?' : ''}`});
     },
     changeLang() {
+      debugger
       if (cookies.get('lang') === 'de') {
         this.defaultLang = false;
       } else if (cookies.get('lang') === 'en') {

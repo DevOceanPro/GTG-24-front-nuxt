@@ -35,7 +35,6 @@
     "vite-plugin-vuetify": "^2.0.3",
     "vue": "^3.4.31",
     "vue-debounce": "^4.0.0",
-    "vue-i18n": "^9.5.0",
     "vue-recaptcha-v3": "^2.0.1",
     "vue-router": "^4.2.4",
     "vue3-apexcharts": "^1.4.4",
@@ -50,6 +49,7 @@
     "pusher-js": "^8.3.0",
     "sass": "^1.63.6",
     "sass-loader": "^13.3.2",
-    "stylus": "^0.63.0"
+    "stylus": "^0.63.0",
+    "vue-i18n": "^9.13.1"
   }
 }
