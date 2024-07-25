@@ -1,0 +1,73 @@
+/* Базові стилі */
+
+/* Загальні налаштування */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+  height: 100vh;
+}
+
+body {
+  height: 100vh;
+  font-family: $font-main;
+  font-size: $font-size;
+  font-style: $font-style;
+  color: $black;
+  background-color: $white;
+}
+
+.container {
+  width: 100%;
+  max-width: $container-max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $padding;
+  padding-right: $padding;
+
+  @media (max-width: 991px) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+input {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch; /* Для Safari на iOS */
+}
+/* Стилі для скроллу в Chrome та Safari */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  @media (max-width: 991px) {
+    width: 5px;
+    height: 5px;
+  }
+}
+::-webkit-scrollbar-thumb {
+  background-color: $green;
+  border-radius: 4px;
+  max-height: 350px;
+}
+::-webkit-scrollbar-track {
+  background-color: $bg-light;
+}
+
+/* Стилі для скроллу в Mozilla Firefox */
+/* Ширина і висота скроллбара */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: $green $bg-light;
+}
+
+/* Стилі для кільця вокруг пальця при торканні */
+*::-webkit-scrollbar-thumb:active {
+  background-color: $green;
+}
+
+/* Стилі для фону скроллбара */
+*::-webkit-scrollbar-track {
+  background-color: $bg-light;
+}

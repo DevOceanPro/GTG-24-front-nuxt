@@ -1,0 +1,30 @@
+/* Міксіни */
+
+/* Міксін для стилів флексбокса */
+@mixin flex($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin transition {
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+@mixin regular400($fontSize: 14px, $color: #000) {
+  color: $color;
+  font-size: $fontSize;
+  line-height: $fontSize + 3px;
+  font-weight: 400;
+}
+
+@mixin regular600($fontSize: 16px, $color: #000) {
+  color: $color;
+  font-size: $fontSize;
+  line-height: $fontSize + 4px;
+  font-weight: 600;
+}
