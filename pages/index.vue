@@ -1,5 +1,6 @@
 <template>
   <HeaderMenu/>
+  <HomePage/>
   <NuxtPage />
     <FooterMenu />
 </template>
@@ -8,6 +9,7 @@
 
 import FooterMenu from "~/src/components/Reuseble/FooterMenu.vue";
 import HeaderMenu from "~/src/components/Reuseble/HeaderMenu.vue";
+import HomePage from "~/src/view/HomePage.vue";
 
 </script>
 

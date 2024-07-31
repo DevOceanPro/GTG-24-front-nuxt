@@ -412,6 +412,7 @@ import {useCookies} from 'vue3-cookies';
 import Container from "~/src/components/Reuseble/Container.vue";
 import Button from '~/src/components/Reuseble/Button.vue';
 import {useI18n} from 'vue-i18n';
+//закоментовано поки стор не доступний
 // import { useLogin } from '~/stores/loginStore';
 // import { companyEvent, companyName, useCompanyStore } from '~/stores/companyStore';
 import AnimationBlock from '~/src/components/Reuseble/AnimationBlock.vue';
