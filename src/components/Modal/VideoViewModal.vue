@@ -9,7 +9,7 @@
         <div class="video-modal__content--video">
           <template v-if="true">
             <video ref="customVideo" controls @ended="videoEnded">
-              <source :src="currentVideo" type="video/mp4"/>
+              <source :src="currentVideo" type="video/mp4" />
             </video>
           </template>
           <img
@@ -27,7 +27,7 @@
                 viewBox="0 0 150 150"
                 fill="none"
             >
-              <rect width="150" height="150" rx="75" fill="white"/>
+              <rect width="150" height="150" rx="75" fill="white" />
               <path
                   d="M97 73.2679C98.3333 74.0378 98.3333 75.9622 97 76.732L65.5 94.9186C64.1667 95.6884 62.5 94.7261 62.5 93.1865L62.5 56.8135C62.5 55.2739 64.1667 54.3116 65.5 55.0814L97 73.2679Z"
                   fill="#4EA62F"
@@ -40,36 +40,50 @@
   </Modal>
 </template>
 
-<script setup>
-import {ref} from 'vue';
-import Modal from '@/src/components/Reuseble/Modal.vue';
-import Button from '@/src/components/Reuseble/Button.vue';
+<script>
+import * as assert from "assert";
+import Button from "@/src/components/Reuseble/Button.vue";
+import Modal from "@/src/components/Reuseble/Modal.vue";
 
-const isPlugVideo = ref(true);
-const isModalOpen = ref(false);
-const currentVideo = ref('');
-const customVideo = ref(null);
+export default {
+  name: "VideoViewModal",
+  computed: {
+    assert() {
+      return assert;
+    },
+  },
+  components: {
+    Button,
+    Modal,
+  },
+  methods: {
+    showModal(video) {
+      this.currentVideo = video;
+      this.$refs.modal.toggleVisibility(true);
+    },
+    hideModal() {
+      this.$refs.modal.toggleVisibility(false);
 
-const showModal = (video) => {
-  currentVideo.value = video;
-  isModalOpen.value = true;
-};
-
-const hideModal = () => {
-  isModalOpen.value = false;
-  isPlugVideo.value = true;
-};
-
-const playVideo = () => {
-  customVideo.value.play();
-  isPlugVideo.value = false;
-};
-
-const videoEnded = () => {
-  isPlugVideo.value = true;
+      this.isPlugVideo = true;
+    },
+    playVideo() {
+      const video = this.$refs.customVideo;
+      video.play();
+      this.isPlugVideo = false;
+    },
+    videoEnded() {
+      this.isPlugVideo = true;
+    },
+  },
+  data() {
+    return {
+      isPlugVideo: true,
+      isModalOpen: false,
+      currentVideo: "",
+    };
+  },
 };
 </script>
-
 <style lang="scss" scoped>
 @import "@/assets/styles/main.scss";
 

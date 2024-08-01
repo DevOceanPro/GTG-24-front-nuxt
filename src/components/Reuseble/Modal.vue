@@ -1,3 +1,46 @@
+<script>
+export default {
+  name: "Modal",
+  data() {
+    return {
+      show: false,
+      // Додайте змінну для зберігання позиції прокрутки
+      scrollPosition: 0,
+    };
+  },
+  methods: {
+    toggleVisibility(status) {
+      if (status) {
+        // Зберегти поточну позицію прокрутки перед відкриттям модалки
+        this.scrollPosition = window.scrollY;
+        document.body.style.position = "fixed";
+        document.body.style.width = "100%";
+      } else {
+        this.$emit('closed');
+
+        document.body.style.position = "static";
+        document.body.style.width = "auto";
+        // Відновити позицію прокрутки після закриття модалки
+        window.scrollTo(0, this.scrollPosition);
+      }
+      this.show = status;
+    },
+  },
+  emits: ['closed'],
+  watch: {
+    show(newVal) {
+      if (newVal) {
+        document.body.style.position = "fixed";
+        document.body.style.width = "100%";
+      } else {
+        document.body.style.position = "static";
+        document.body.style.width = "auto";
+      }
+    },
+  },
+};
+</script>
+
 <template>
   <teleport to="body">
     <div
@@ -7,47 +50,14 @@
         class="modal-backdrop"
     >
       <div class="modal-content" @click.stop>
-        <slot></slot>
+        <slot> </slot>
       </div>
     </div>
   </teleport>
 </template>
 
-<script setup>
-import {ref, watch} from 'vue';
-
-const show = ref(false);
-const scrollPosition = ref(0);
-
-const toggleVisibility = (status) => {
-  if (status) {
-    // Save the current scroll position before opening the modal
-    scrollPosition.value = window.scrollY;
-    document.body.style.position = 'fixed';
-    document.body.style.width = '100%';
-  } else {
-    // Emit closed event and restore scroll position after closing the modal
-    window.scrollTo(0, scrollPosition.value);
-    document.body.style.position = 'static';
-    document.body.style.width = 'auto';
-  }
-  show.value = status;
-};
-
-watch(show, (newVal) => {
-  if (newVal) {
-    document.body.style.position = 'fixed';
-    document.body.style.width = '100%';
-  } else {
-    document.body.style.position = 'static';
-    document.body.style.width = 'auto';
-  }
-});
-</script>
-
 <style scoped lang="scss">
 @import "@/assets/styles/main.scss";
-
 .modal-backdrop {
   z-index: 100;
   @include flex(row, center, center);
@@ -58,7 +68,6 @@ watch(show, (newVal) => {
   height: 100%;
   padding: 0px 15px;
 }
-
 .modal-content {
   position: relative;
   border-radius: 10px;
