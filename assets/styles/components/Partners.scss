@@ -1,0 +1,242 @@
+.partners {
+  margin: 85px 0;
+
+  &__title {
+    margin-bottom: 52px;
+    position: relative;
+
+    & > h3 {
+      text-align: center;
+      font-family: Montserrat, sans-serif;
+      font-size: 41px;
+      font-weight: 700;
+      line-height: 57.4px;
+    }
+  }
+
+  &__items {
+    position: relative;
+    padding-bottom: 44px;
+
+    &-item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      min-width: 145px;
+      max-width: 145px;
+      position: relative;
+      z-index: 100;
+      cursor: pointer;
+
+      &--card {
+        &-img {
+          width: 145px;
+          height: 200px;
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center;
+          margin-bottom: 8px;
+
+          & > img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        &-title {
+          font-size: 16px;
+          font-weight: 600;
+          line-height: 22.4px;
+          text-align: left;
+        }
+      }
+    }
+  }
+
+  &__cards {
+    position: relative;
+  }
+}
+
+.partners__hints {
+  position: absolute;
+  top: -58px;
+  left: 16px;
+
+  &--top {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+
+    &-icon {
+      margin-right: 8px;
+    }
+
+    &-text {
+      font-family: Montserrat, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16.8px;
+      color: #4ea62f;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.partners__mobile-hints {
+  position: relative;
+  padding-left: 20px;
+
+  &--top {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+
+    &-icon {
+      margin-right: 8px;
+    }
+
+    &-text {
+      font-family: Montserrat, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 16.8px;
+      color: #4ea62f;
+      text-transform: uppercase;
+    }
+  }
+}
+
+@keyframes show {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+.card {
+  background-color: #4ea62fcc;
+  height: 200px;
+  min-width: 145px;
+  border-radius: 8px;
+  padding: 16px 9px;
+  z-index: 100;
+  cursor: default;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  animation-name: show;
+  animation-duration: 1s;
+
+  &__text {
+    & > p {
+      font-family: Montserrat, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 19.6px;
+      text-align: left;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+  }
+
+  &__icons {
+    position: relative;
+    cursor: pointer;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--first {
+      position: absolute;
+      z-index: 1;
+      width: 82px;
+      height: 82px;
+      background-color: #fff;
+      opacity: 0.1;
+      border-radius: 50%;
+    }
+
+    &--second {
+      position: absolute;
+      z-index: 2;
+      width: 60px;
+      height: 60px;
+      background-color: #fff;
+      opacity: 0.4;
+      border-radius: 50%;
+    }
+
+    &--third {
+      position: absolute;
+      z-index: 3;
+      width: 42px;
+      height: 42px;
+      background-color: #fff;
+      opacity: 0.8;
+      border-radius: 50%;
+    }
+
+    &--fourth {
+      position: absolute;
+      z-index: 4;
+      width: 34px;
+      height: 34px;
+      background-color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      & > img {
+        width: 9px;
+        height: 9px;
+      }
+    }
+  }
+}
+
+.show {
+  display: flex;
+}
+
+@media (max-width: 700px) {
+  .partners {
+    &__title {
+      & > h3 {
+        font-size: 21px;
+        line-height: 30px;
+      }
+    }
+  }
+}
+
+::v-global {
+  .swiper-pagination-bullet {
+    background-color: white;
+    border: 1px solid #3fd209;
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: #9fdd88;
+    border: none;
+  }
+
+  .swiper-pagination-fraction,
+  .swiper-pagination-custom,
+  .swiper-horizontal > .swiper-pagination-bullets,
+  .swiper-pagination-bullets.swiper-pagination-horizontal {
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+  }
+}

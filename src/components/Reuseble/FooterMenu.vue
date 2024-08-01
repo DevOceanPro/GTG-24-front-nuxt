@@ -42,11 +42,12 @@
 </template>
 
 <script setup>
+// закоментовано поки стор не доступний
 //import { useLogin } from "@/stores/loginStore";
 import {ref, watchEffect} from 'vue';
 import {useI18n} from 'vue-i18n';
 import Container from "~/src/components/Reuseble/Container.vue";
-
+//закоментовано поки стор не доступний
 //const loginStore = useLogin();
 const loginStore = {}
 loginStore.roleName == "super-admin"

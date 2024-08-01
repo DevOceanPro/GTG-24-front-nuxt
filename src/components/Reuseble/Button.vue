@@ -1,9 +1,12 @@
 <template>
-  <v-btn v-if='isPaymentBtn' height='48' :loading='isLoading' :disabled="isDisabled" class="button btn" :class="name" :type="type">
-    {{ text }} <slot></slot>
+  <v-btn v-if='isPaymentBtn' height='48' :loading='isLoading' :disabled="isDisabled" class="button btn" :class="name"
+         :type="type">
+    {{ text }}
+    <slot></slot>
   </v-btn>
   <button v-else :disabled="isDisabled" class="button" :class="name" :type="type">
-    {{ text }} <slot></slot>
+    {{ text }}
+    <slot></slot>
   </button>
 </template>
 
@@ -52,6 +55,7 @@ defineProps({
   background: $green;
   color: $white;
   font-family: $font-main;
+
   &:hover {
     background-color: $white;
     border: 2px solid $green;
@@ -69,6 +73,7 @@ defineProps({
   background-color: transparent;
   border: 2px solid $green;
   color: $green;
+
   &:hover {
     background-color: $green;
     color: $white;
@@ -79,6 +84,7 @@ defineProps({
   background: $white;
   color: $black;
   border: 1px solid #e1e1e1;
+
   &:hover {
     background: $green;
     color: $white;
@@ -96,6 +102,7 @@ defineProps({
   background: $white;
   color: $black;
   border: 1px solid $black;
+
   &:hover {
     background: $black;
     color: $white;
@@ -106,6 +113,7 @@ defineProps({
   background: $white;
   color: #c31919;
   border: 1px solid #c31919;
+
   &:hover {
     background: #c31919;
     color: $white;
@@ -128,6 +136,7 @@ button:disabled {
   background: $white;
   color: #0E6DDC;
   border: 2px solid #0E6DDC;
+
   &:hover {
     background: #0E6DDC;
     color: $white;
