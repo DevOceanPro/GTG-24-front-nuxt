@@ -37,99 +37,104 @@ import {ref, onMounted, onBeforeUnmount} from 'vue';
 // закоментовано поки стор не доступний
 // import { useLogin } from "@/stores/loginStore";
 // import { useStatisticStore, statisticEvent, statisticName } from "@/stores/statisticStore";
-import Banner from "~/src/components/Blocks/Banner.vue";
-import HomeBlock from "~/src/components/Blocks/HomeBlock.vue";
-import OurOpportunities from "~/src/components/Blocks/OurOpportunities.vue";
-import ForClients from "~/src/components/Blocks/ForClients.vue";
-import ForCompanies from "~/src/components/Blocks/ForCompanies.vue";
-import Partners from "~/src/components/Blocks/Partners.vue";
-import WhyUs from "~/src/components/Blocks/WhyUs.vue";
-import WhyChooseUs from "~/src/components/Blocks/WhyChooseUs.vue";
-import OurClients from "~/src/components/Blocks/OurClients.vue";
-import OurTestimonials from "~/src/components/Blocks/OurTestimonials.vue";
-import Container from "~/src/components/Reuseble/Container.vue";
-import Loader from "~/src/components/Reuseble/AnimationBlock.vue";
-import Social from "~/src/components/Blocks/Social/Social.vue";
-import {useHead} from "@unhead/vue";
+import {useHead} from '@unhead/vue';
+import {useI18n} from 'vue-i18n';
+// Importing components
+import Banner from '~/src/components/Blocks/Banner.vue';
+import HomeBlock from '~/src/components/Blocks/HomeBlock.vue';
+import OurOpportunities from '~/src/components/Blocks/OurOpportunities.vue';
+import ForClients from '~/src/components/Blocks/ForClients.vue';
+import ForCompanies from '~/src/components/Blocks/ForCompanies.vue';
+import Partners from '~/src/components/Blocks/Partners.vue';
+import WhyUs from '~/src/components/Blocks/WhyUs.vue';
+import WhyChooseUs from '~/src/components/Blocks/WhyChooseUs.vue';
+import OurClients from '~/src/components/Blocks/OurClients.vue';
+import OurTestimonials from '~/src/components/Blocks/OurTestimonials.vue';
+import Container from '~/src/components/Reuseble/Container.vue';
+import Loader from '~/src/components/Reuseble/AnimationBlock.vue';
+import Social from '~/src/components/Blocks/Social/Social.vue';
 
-useHead({title: "GTG 24"});
+useHead({title: 'GTG 24'});
+const {t} = useI18n();
 
 const show = ref(false);
-// Захардкоджені данні, поки стор не доступний
-const userInfo = undefined; // Закомментовано: const loginStore = useLogin();
-const roleName = 'customer'; // Закомментовано: const roleName = loginStore.roleName;
+const userInfo = undefined; // Temporary placeholder, replace with actual logic
+const roleName = 'customer'; // Temporary placeholder, replace with actual logic
 const statisticBanners = undefined;
 const homePageStatistic = undefined;
 const reviewSite = undefined;
+
 const company = {
-  preTitle: "ForCompanies",
-  title: "ForCompaniesTitle",
+  preTitle: t('ForCompanies'),
+  title: t('ForCompaniesTitle'),
   items: [
     {
-      title: "ForCompaniesItemOne",
-      url: "login",
+      title: t('ForCompaniesItemOne'),
+      url: 'login',
     },
     {
-      title: "ForCompaniesItemTwo",
-      url: "login",
+      title: t('ForCompaniesItemTwo'),
+      url: 'login',
     },
     {
-      title: "ForCompaniesItemThree",
-      url: "login",
+      title: t('ForCompaniesItemThree'),
+      url: 'login',
     },
   ],
 };
+
 const companyLogin = {
-  preTitle: "ForCompanies",
-  title: "ForCompaniesTitle",
+  preTitle: t('ForCompanies'),
+  title: t('ForCompaniesTitle'),
   items: [
     {
-      title: "ForCompaniesItemOne",
-      url: "offers-list",
+      title: t('ForCompaniesItemOne'),
+      url: 'offers-list',
     },
     {
-      title: "ForCompaniesItemTwo",
-      url: "active-offers",
+      title: t('ForCompaniesItemTwo'),
+      url: 'active-offers',
     },
     {
-      title: "ForCompaniesItemThree",
-      url: "clients",
+      title: t('ForCompaniesItemThree'),
+      url: 'clients',
     },
   ],
 };
+
 const client = {
-  preTitle: "ForClients",
-  title: "PlaceAnAd",
+  preTitle: t('ForClients'),
+  title: t('PlaceAnAd'),
   items: [
     {
-      title: "HireCompany",
-      url: "login",
+      title: t('HireCompany'),
+      url: 'login',
     },
     {
-      title: "ConsiderCompanies",
-      url: "login",
+      title: t('ConsiderCompanies'),
+      url: 'login',
     },
     {
-      title: "LetUsHelp",
-      url: "login",
+      title: t('LetUsHelp'),
+      url: 'login',
     },
   ],
 };
 const clientLogin = {
-  preTitle: "ForClients",
-  title: "PlaceAnAd",
+  preTitle: t('ForClients'),
+  title: t('PlaceAnAd'),
   items: [
     {
-      title: "HireCompany",
-      url: "user-offers",
+      title: t('HireCompany'),
+      url: 'user-offers',
     },
     {
-      title: "ConsiderCompanies",
-      url: "user-offers",
+      title: t('ConsiderCompanies'),
+      url: 'user-offers',
     },
     {
-      title: "LetUsHelp",
-      url: "user-contact",
+      title: t('LetUsHelp'),
+      url: 'user-contact',
     },
   ],
 };
