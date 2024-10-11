@@ -1,6 +1,7 @@
 <script>
 export default {
-  name: "Modal",
+  name: "CustomModal",
+  emits: ["closed"],
   data() {
     return {
       show: false,
@@ -8,25 +9,6 @@ export default {
       scrollPosition: 0,
     };
   },
-  methods: {
-    toggleVisibility(status) {
-      if (status) {
-        // Зберегти поточну позицію прокрутки перед відкриттям модалки
-        this.scrollPosition = window.scrollY;
-        document.body.style.position = "fixed";
-        document.body.style.width = "100%";
-      } else {
-        this.$emit('closed');
-
-        document.body.style.position = "static";
-        document.body.style.width = "auto";
-        // Відновити позицію прокрутки після закриття модалки
-        window.scrollTo(0, this.scrollPosition);
-      }
-      this.show = status;
-    },
-  },
-  emits: ['closed'],
   watch: {
     show(newVal) {
       if (newVal) {
@@ -38,19 +20,37 @@ export default {
       }
     },
   },
+  methods: {
+    toggleVisibility(status) {
+      if (status) {
+        // Зберегти поточну позицію прокрутки перед відкриттям модалки
+        this.scrollPosition = window.scrollY;
+        document.body.style.position = "fixed";
+        document.body.style.width = "100%";
+      } else {
+        this.$emit("closed");
+
+        document.body.style.position = "static";
+        document.body.style.width = "auto";
+        // Відновити позицію прокрутки після закриття модалки
+        window.scrollTo(0, this.scrollPosition);
+      }
+      this.show = status;
+    },
+  },
 };
 </script>
 
 <template>
   <teleport to="body">
     <div
-        v-if="show"
-        ref="modal-backdrop"
-        @click="toggleVisibility(false)"
-        class="modal-backdrop"
+      v-if="show"
+      ref="modal-backdrop"
+      class="modal-backdrop"
+      @click="toggleVisibility(false)"
     >
       <div class="modal-content" @click.stop>
-        <slot> </slot>
+        <slot />
       </div>
     </div>
   </teleport>

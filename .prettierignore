@@ -1,0 +1,12 @@
+# Ignore generated Nuxt files
+.nuxt
+dist
+
+# Ignore dependencies
+node_modules
+
+# Ignore files and folders that do not require formatting
+public
+assets
+locales
+server

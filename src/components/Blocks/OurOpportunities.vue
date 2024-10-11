@@ -1,23 +1,21 @@
 <template>
   <div class="our-opportunities">
-    <Container>
+    <ContainerComponent>
       <div class="our-opportunities__title">
         <p>{{ $t("OurOpportunitiesHeader") }}</p>
         <h2>{{ $t("OurOpportunitiesText") }}</h2>
       </div>
-      <BlogSlider/>
-    </Container>
+      <BlogSlider />
+    </ContainerComponent>
   </div>
 </template>
 
 <script setup>
-import Container from "~/src/components/Reuseble/Container.vue";
 import BlogSlider from "~/src/components/Blog/BlogSlider.vue";
+import ContainerComponent from "~/src/components/Reusable/ContainerComponent.vue";
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/main.scss";
-
 .our-opportunities {
   margin-top: 120px;
   margin-bottom: 140px;

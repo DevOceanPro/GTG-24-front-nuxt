@@ -1,8 +1,8 @@
 <template>
-  <Modal ref="modal">
+  <CustomModal ref="modal">
     <div class="modal">
       <button class="close-btn" @click="hideModal">
-        <i class="icon-close"></i>
+        <i class="icon-close" />
       </button>
       <h2 class="modal__title">{{ $t("SendYourTestimonials") }}</h2>
       <p class="modal__text">
@@ -12,30 +12,52 @@
         <div class="modal__inputs">
           <div class="modal__input">
             <label for="name">{{ $t("FirstLastName") }}</label>
-            <input minlength="3" type="text" id="name" v-model="formData.author" required/>
+            <input
+              id="name"
+              v-model="formData.author"
+              minlength="3"
+              type="text"
+              required
+            />
           </div>
           <div class="modal__input">
             <label for="email">{{ $t("Email") }}</label>
-            <input minlength="12" type="email" id="email" v-model="formData.email" required/>
+            <input
+              id="email"
+              v-model="formData.email"
+              minlength="12"
+              type="email"
+              required
+            />
           </div>
         </div>
 
         <div class="modal__textarea">
           <label for="message">{{ $t("Message") }}</label>
-          <textarea id="message" maxlength="1500" v-model="formData.description" required></textarea>
+          <textarea
+            id="message"
+            v-model="formData.description"
+            maxlength="1500"
+            required
+          />
         </div>
 
-        <Button class="modal__btn" type="submit" :text="$t('Send')" name="green"/>
+        <CustomButton
+          class="modal__btn"
+          type="submit"
+          :text="$t('Send')"
+          name="green"
+        />
       </form>
     </div>
-  </Modal>
+  </CustomModal>
 </template>
 
 <script setup>
-import {ref} from 'vue';
-import {useI18n} from 'vue-i18n';
-import Modal from "~/src/components/Reuseble/Modal.vue";
-import Button from "~/src/components/Reuseble/Button.vue";
+import { ref } from "vue";
+import { useI18n } from "vue-i18n";
+import CustomButton from "~/src/components/Reusable/CustomButton.vue";
+import CustomModal from "~/src/components/Reusable/CustomModal.vue";
 
 // закоментовано поки стор не доступний
 // import useReview from "@/stores/reviewStore";
@@ -44,11 +66,11 @@ const formData = ref({
   author: "",
   email: "",
   description: "",
-  recaptcha_token: ""
+  recaptcha_token: "",
 });
 
 const modal = ref(null);
-const {t} = useI18n();
+const { t } = useI18n();
 
 function showModal() {
   modal.value.toggleVisibility(true);

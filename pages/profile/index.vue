@@ -1,5 +1,4 @@
 <template>
   <div>indexprof</div>
 </template>
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>

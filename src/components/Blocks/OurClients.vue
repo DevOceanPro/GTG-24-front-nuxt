@@ -1,61 +1,59 @@
 <template>
   <div class="our-clients">
-    <Container>
+    <ContainerComponent>
       <div class="content">
         <div class="content__info">
           <p class="content__pre-title">
-            {{ $t('Pioneers') }}
+            {{ $t("Pioneers") }}
           </p>
           <h2 class="content__title">
-            {{ $t('PioneersDesc') }}
+            {{ $t("PioneersDesc") }}
           </h2>
           <ul class="content__list">
             <li class="content__item">
               <h4>
                 <span>{{ homePageStatistic?.companiesCount || 123 }}</span>
-                <span>{{ $t('companies') }}</span>
+                <span>{{ $t("companies") }}</span>
               </h4>
               <p>
-                {{ $t('PioneersCompany') }}
+                {{ $t("PioneersCompany") }}
               </p>
             </li>
             <li class="content__item">
               <h4>
                 <span>{{ homePageStatistic?.customerCount || 456 }}</span>
-                <span>{{ $t('ClientsVerb') }}</span>
+                <span>{{ $t("ClientsVerb") }}</span>
               </h4>
               <p>
-                {{ $t('PioneersClients') }}
+                {{ $t("PioneersClients") }}
               </p>
             </li>
           </ul>
         </div>
         <div class="content__map">
-          <img src="@/assets/home/map.svg" alt="map"/>
+          <img src="@/assets/home/map.svg" alt="map" />
         </div>
       </div>
-    </Container>
+    </ContainerComponent>
   </div>
 </template>
 
 <script setup>
-import {ref} from 'vue';
-import {useI18n} from 'vue-i18n';
-import Container from '~/src/components/Reuseble/Container.vue';
+import { ref } from "vue";
+import { useI18n } from "vue-i18n";
+import ContainerComponent from "~/src/components/Reusable/ContainerComponent.vue";
 
 // const homePageStatistic = ref(null); // Замінити на рельну логіку
 // закоментовано для переноса
 const homePageStatistic = ref({
   companiesCount: 123, // захардкожені дані
-  customerCount: 456 // захардкожені дані
+  customerCount: 456, // захардкожені дані
 });
 
-const {t} = useI18n();
+const { t } = useI18n();
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/main.scss";
-
 .our-clients {
   padding: 80px 0;
   background-image: url(@/assets/our-clients-bg.png);
@@ -63,8 +61,12 @@ const {t} = useI18n();
   background-position: bottom;
   @media (max-width: 991px) {
     padding: 70px 0;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.3) 100%),
-    url(@/assets/our-clients-bg-mobile.jfif);
+    background: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.3) 0%,
+        rgba(0, 0, 0, 0.3) 100%
+      ),
+      url(@/assets/our-clients-bg-mobile.jfif);
     background-position: center;
     background-size: cover;
   }

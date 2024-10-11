@@ -3,99 +3,101 @@
     <div v-if="isMobileDevice" class="partners__mobile-hints">
       <div class="partners__mobile-hints--top">
         <img
-            class="partners__mobile-hints--top-icon"
-            :src="icons.HoverIcon"
-            alt="hints hover icon"
+          class="partners__mobile-hints--top-icon"
+          :src="icons.HoverIcon"
+          alt="hints hover icon"
         />
-        <span class="partners__mobile-hints--top-text">{{ $t("clickHere") }}</span>
+        <span class="partners__mobile-hints--top-text">{{
+          $t("clickHere")
+        }}</span>
       </div>
       <img
-          class="partners__mobile-hints--bottom"
-          :src="icons.WavyArrow"
-          alt="hints wavy arrow icon"
+        class="partners__mobile-hints--bottom"
+        :src="icons.WavyArrow"
+        alt="hints wavy arrow icon"
       />
     </div>
 
     <div
-        class="partners__title"
-        :style="{ marginBottom: isMobileDevice ? '20px' : '52px' }"
+      class="partners__title"
+      :style="{ marginBottom: isMobileDevice ? '20px' : '52px' }"
     >
       <h3>{{ $t("stepRegistrationTitle") }}</h3>
     </div>
 
-    <Container>
+    <ContainerComponent>
       <div class="partners__cards">
         <div v-if="!isMobileDevice" class="partners__hints">
           <div class="partners__hints--top">
             <img
-                class="partners__hints--top-icon"
-                :src="icons.HoverIcon"
-                alt="hints hover icon"
+              class="partners__hints--top-icon"
+              :src="icons.HoverIcon"
+              alt="hints hover icon"
             />
             <span class="partners__hints--top-text">{{ $t("hoverHere") }}</span>
           </div>
           <img
-              class="partners__hints--bottom"
-              :src="icons.WavyArrow"
-              alt="hints wavy arrow icon"
+            class="partners__hints--bottom"
+            :src="icons.WavyArrow"
+            alt="hints wavy arrow icon"
           />
         </div>
 
         <swiper
-            :centeredSlides="false"
-            :modules="modules"
-            :pagination="{
+          :centered-slides="false"
+          :modules="modules"
+          :pagination="{
             clickable: true,
           }"
-            :breakpoints="sliderBreakPoints"
-            class="partners__items"
+          :breakpoints="sliderBreakPoints"
+          class="partners__items"
         >
           <swiper-slide
-              v-for="(item, index) in partners"
-              :key="item.id"
-              class="partners__items-item"
-              @mouseover="showCard(index)"
-              @mouseout="hideCard(index)"
-              @touchstart="showCard(index)"
-              @mouseleave="hideCard(index)"
+            v-for="(item, index) in partners"
+            :key="item.id"
+            class="partners__items-item"
+            @mouseover="showCard(index)"
+            @mouseout="hideCard(index)"
+            @touchstart="showCard(index)"
+            @mouseleave="hideCard(index)"
           >
             <div class="partners__items-item--card">
               <div
-                  class="partners__items-item--card-img"
-                  :style="{ backgroundImage: `url(${item.image})` }"
-              ></div>
+                class="partners__items-item--card-img"
+                :style="{ backgroundImage: `url(${item.image})` }"
+              />
               <p class="partners__items-item--card-title">
                 {{ item.title }}
               </p>
             </div>
 
             <div
-                @click="
+              :class="`card ${item.isVisible ? 'show' : ''}`"
+              @click="
                 () =>
                   handleOpenVideoModal(
                     isCurrentLangDe ? item.video.deVideo : item.video.enVideo,
-                    item.preImage
+                    item.preImage,
                   )
               "
-                :class="`card ${item.isVisible ? 'show' : ''}`"
             >
               <div class="card__text">
                 <p>{{ item.subTitle }}</p>
               </div>
               <div class="card__icons">
-                <div class="card__icons--first"/>
-                <div class="card__icons--second"/>
-                <div class="card__icons--third"/>
+                <div class="card__icons--first" />
+                <div class="card__icons--second" />
+                <div class="card__icons--third" />
                 <div class="card__icons--fourth">
-                  <img :src="icons.PlayIcon" alt="play icon"/>
+                  <img :src="icons.PlayIcon" alt="play icon" />
                 </div>
               </div>
             </div>
           </swiper-slide>
         </swiper>
       </div>
-      <VideoViewModal ref="videoView"/>
-    </Container>
+      <VideoViewModal ref="videoView" />
+    </ContainerComponent>
   </div>
 </template>
 
@@ -103,11 +105,10 @@
 import "swiper/css";
 import "swiper/css/pagination";
 
-import {useCookies} from "vue3-cookies";
-import {Swiper, SwiperSlide} from "swiper/vue";
-import {Pagination} from "swiper/modules";
+import { useCookies } from "vue3-cookies";
+import { Swiper, SwiperSlide } from "swiper/vue";
+import { Pagination } from "swiper/modules";
 
-import Container from "@/src/components/Reuseble/Container.vue";
 import VideoViewModal from "@/src/components/Modal/VideoViewModal.vue";
 
 import HoverIcon from "@/assets/icons/partners/hover-here.svg";
@@ -140,23 +141,24 @@ import stepRegistration5 from "../../assets/img/step-registration/step-5.jpeg";
 import stepRegistration6 from "../../assets/img/step-registration/step-6.jpeg";
 import stepRegistration7 from "../../assets/img/step-registration/step-7.jpeg";
 
-import {PARTNERS_SLIDER_BREAKPOINTS} from "../../core/mock-data/partners/partners_mock_data";
-import {isMobileBrowser} from "~/src/utils/helpers/isMobileBrowser.js";
+import { PARTNERS_SLIDER_BREAKPOINTS } from "../../core/mock-data/partners/partners_mock_data";
+import { isMobileBrowser } from "~/src/utils/helpers/isMobileBrowser.js";
+import ContainerComponent from "~/src/components/Reusable/ContainerComponent.vue";
 
 export default {
-  name: 'Partners',
+  name: "OurPartners",
   components: {
-    Container,
+    ContainerComponent,
     VideoViewModal,
     Swiper,
-    SwiperSlide
+    SwiperSlide,
   },
   data() {
     return {
       icons: {
         HoverIcon,
         WavyArrow,
-        PlayIcon
+        PlayIcon,
       },
       modules: [Pagination],
       sliderBreakPoints: PARTNERS_SLIDER_BREAKPOINTS,
@@ -170,9 +172,9 @@ export default {
           isVisible: false,
           video: {
             deVideo: stepRegistrationVideoDe1,
-            enVideo: stepRegistrationVideoEn1
+            enVideo: stepRegistrationVideoEn1,
           },
-          preImage: defaultVideoImage
+          preImage: defaultVideoImage,
         },
         {
           id: 2,
@@ -183,9 +185,9 @@ export default {
           isVisible: false,
           video: {
             deVideo: stepRegistrationVideoDe2,
-            enVideo: stepRegistrationVideoEn2
+            enVideo: stepRegistrationVideoEn2,
           },
-          preImage: defaultVideoImage
+          preImage: defaultVideoImage,
         },
         {
           id: 3,
@@ -196,9 +198,9 @@ export default {
           isVisible: false,
           video: {
             deVideo: stepRegistrationVideoDe3,
-            enVideo: stepRegistrationVideoEn3
+            enVideo: stepRegistrationVideoEn3,
           },
-          preImage: defaultVideoImage
+          preImage: defaultVideoImage,
         },
         {
           id: 4,
@@ -209,9 +211,9 @@ export default {
           isVisible: false,
           video: {
             deVideo: stepRegistrationVideoDe4,
-            enVideo: stepRegistrationVideoEn4
+            enVideo: stepRegistrationVideoEn4,
           },
-          preImage: defaultVideoImage
+          preImage: defaultVideoImage,
         },
         {
           id: 5,
@@ -222,9 +224,9 @@ export default {
           isVisible: false,
           video: {
             deVideo: stepRegistrationVideoDe5,
-            enVideo: stepRegistrationVideoEn5
+            enVideo: stepRegistrationVideoEn5,
           },
-          preImage: defaultVideoImage
+          preImage: defaultVideoImage,
         },
         {
           id: 6,
@@ -235,9 +237,9 @@ export default {
           isVisible: false,
           video: {
             deVideo: stepRegistrationVideoDe6,
-            enVideo: stepRegistrationVideoEn6
+            enVideo: stepRegistrationVideoEn6,
           },
-          preImage: defaultVideoImage
+          preImage: defaultVideoImage,
         },
         {
           id: 7,
@@ -248,11 +250,11 @@ export default {
           isVisible: false,
           video: {
             deVideo: stepRegistrationVideoDe7,
-            enVideo: stepRegistrationVideoEn7
+            enVideo: stepRegistrationVideoEn7,
           },
-          preImage: defaultVideoImage
-        }
-      ]
+          preImage: defaultVideoImage,
+        },
+      ],
     };
   },
   computed: {
@@ -262,11 +264,11 @@ export default {
     isCurrentLangDe() {
       const cookies = useCookies().cookies;
       return cookies.get("lang") === "de";
-    }
+    },
   },
   methods: {
     showCard(index) {
-      this.partners.forEach(item => (item.isVisible = false));
+      this.partners.forEach((item) => (item.isVisible = false));
       this.partners[index].isVisible = true;
     },
     hideCard(index) {
@@ -276,12 +278,11 @@ export default {
       if (this.$refs.videoView) {
         this.$refs.videoView.showModal(video, image);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style lang="scss">
-@import "@/assets/styles/main";
 @import "@/assets/styles/components/Partners.scss";
 </style>

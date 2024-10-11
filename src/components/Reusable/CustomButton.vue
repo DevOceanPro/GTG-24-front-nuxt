@@ -1,12 +1,25 @@
 <template>
-  <v-btn v-if='isPaymentBtn' height='48' :loading='isLoading' :disabled="isDisabled" class="button btn" :class="name"
-         :type="type">
+  <v-btn
+    v-if="isPaymentBtn"
+    height="48"
+    :loading="isLoading"
+    :disabled="isDisabled"
+    class="button btn"
+    :class="name"
+    :type="type"
+  >
     {{ text }}
-    <slot></slot>
+    <slot />
   </v-btn>
-  <button v-else :disabled="isDisabled" class="button" :class="name" :type="type">
+  <button
+    v-else
+    :disabled="isDisabled"
+    class="button"
+    :class="name"
+    :type="type"
+  >
     {{ text }}
-    <slot></slot>
+    <slot />
   </button>
 </template>
 
@@ -14,24 +27,27 @@
 defineProps({
   name: {
     type: String,
+    default: "",
   },
   type: {
     type: String,
+    default: "button",
   },
   text: {
     type: String,
+    default: "Submit",
   },
   isDisabled: {
     type: Boolean,
   },
   isLoading: {
     type: Boolean,
-    default: false
+    default: false,
   },
   isPaymentBtn: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 });
 </script>
 
@@ -127,18 +143,18 @@ button:disabled {
 }
 
 .blue {
-  background: #0E6DDC;
-  border: 2px solid #0E6DDC;
+  background: #0e6ddc;
+  border: 2px solid #0e6ddc;
   color: $white;
 }
 
 .blue-outline {
   background: $white;
-  color: #0E6DDC;
-  border: 2px solid #0E6DDC;
+  color: #0e6ddc;
+  border: 2px solid #0e6ddc;
 
   &:hover {
-    background: #0E6DDC;
+    background: #0e6ddc;
     color: $white;
   }
 }

@@ -1,19 +1,28 @@
 <template>
   <div class="blog-slider">
-    <v-slide-group
-        class="blog-slider__group"
-        :show-arrows="true"
-    >
-      <template v-slot:next>
-        <img class="user-select-none slider-arrow" alt="lens" :src="greenArrowRight"/>
+    <v-slide-group class="blog-slider__group" :show-arrows="true">
+      <template #next>
+        <img
+          class="user-select-none slider-arrow"
+          alt="lens"
+          :src="greenArrowRight"
+        />
       </template>
-      <template v-slot:prev>
-        <img class="user-select-none slider-arrow" alt="lens" :src="greenArrowLeft"/>
+      <template #prev>
+        <img
+          class="user-select-none slider-arrow"
+          alt="lens"
+          :src="greenArrowLeft"
+        />
       </template>
 
       <div class="blog-slides">
-        <v-slide-group-item :key="post.id" class="blog-slider__slide" v-for="post in allBlogPosts">
-          <BlogSlide :post="post"></BlogSlide>
+        <v-slide-group-item
+          v-for="post in allBlogPosts"
+          :key="post.id"
+          class="blog-slider__slide"
+        >
+          <BlogSlide :post="post" />
         </v-slide-group-item>
       </div>
     </v-slide-group>
@@ -21,10 +30,10 @@
 </template>
 
 <script setup>
-import {ref, onMounted} from 'vue';
-import greenArrowLeft from '@/assets/green-arrow-left.svg';
-import greenArrowRight from '@/assets/green-arrow-right.svg';
-import BlogSlide from '~/src/components/Blog/BlogSlide.vue';
+import { ref, onMounted } from "vue";
+import greenArrowLeft from "@/assets/green-arrow-left.svg";
+import greenArrowRight from "@/assets/green-arrow-right.svg";
+import BlogSlide from "~/src/components/Blog/BlogSlide.vue";
 import queryString from "query-string";
 // import { useBlog } from '@/stores/blogStore'; // Закоментовано до переноса стора
 
@@ -32,13 +41,13 @@ const props = defineProps({
   postId: {
     type: Number,
     required: false,
-    default: null
+    default: null,
   },
   limit: {
     type: Number,
     required: false,
-    default: 5
-  }
+    default: 5,
+  },
 });
 
 // const useBlog = useBlog(); // Закоментовано до переноса стора

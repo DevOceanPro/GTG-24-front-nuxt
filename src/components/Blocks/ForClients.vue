@@ -1,48 +1,46 @@
 <template>
   <div class="for-companies">
-    <Container>
+    <ContainerComponent>
       <div class="content">
         <div class="content__bg">
-          <div class="content__bg__overlay"></div>
+          <div class="content__bg__overlay" />
         </div>
         <div class="content__info">
           <p class="content__pre-title">{{ object.preTitle }}</p>
-          <h2 class="content__title" v-html="object.title"/>
+          <h2 class="content__title" v-html="object.title" />
 
           <ul class="content__list">
             <li
-                v-for="(item, index) in object.items"
-                :key="index"
-                class="content__item"
+              v-for="(item, index) in object.items"
+              :key="index"
+              class="content__item"
             >
               <p>{{ item.title }}</p>
               <router-link :to="{ name: item.url }">
                 <span>{{ $t("GetStarted") }}</span>
-                <i class="icon-arr-long-right"></i>
+                <i class="icon-arr-long-right" />
               </router-link>
             </li>
           </ul>
         </div>
       </div>
-    </Container>
+    </ContainerComponent>
   </div>
 </template>
 
 <script setup>
-import {defineProps} from 'vue';
-import Container from "~/src/components/Reuseble/Container.vue";
+import { defineProps } from "vue";
+import ContainerComponent from "~/src/components/Reusable/ContainerComponent.vue";
 
 const props = defineProps({
   object: {
     type: Object,
     required: true,
-  }
+  },
 });
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/main.scss";
-
 .content {
   position: relative;
   background-image: url(@/assets/home/banner-for-companies.jpg);

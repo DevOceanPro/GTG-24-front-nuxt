@@ -1,12 +1,12 @@
 <template>
-  <div class="anim" v-if="show">
-    <div class="blob"></div>
+  <div v-if="show" class="anim">
+    <div class="blob" />
   </div>
 </template>
 
 <script setup>
 const props = defineProps({
-  show: Boolean
+  show: Boolean,
 });
 </script>
 

@@ -11,37 +11,37 @@ import iconBattery from "../../../../../GTG-24-front/src/assets/icons/platform/b
 import iconSetup from "../../../../../GTG-24-front/src/assets/icons/platform/setup.svg";
 
 export const WHY_US_DATA = [
-    {
-        icon: iconWindmill,
-        image: windmillImage,
-        title: "SolarPVSystems",
-        subtitle: "ServiceSubtitleSolar",
-        text: ["sun", "wind", "water", "hydrogen"],
-    },
-    {
-        icon: iconBattery,
-        image: batteryImage,
-        title: "ServiceTitleWindTurbines",
-        subtitle: "ServiceSubtitleWindEnergy",
-        text: ["airHeat", "geothermalHeat", "ecoHeating"],
-    },
-    {
-        icon: iconPowerhouse,
-        image: powerhouseImage,
-        title: "ServiceTitleGreenHydrogen",
-        subtitle: "ServiceSubtitleSolarHydro",
-        text: ["eCars", "eBikes", "eHeating"],
-    },
-    {
-        icon: iconSetup,
-        image: setupImage,
-        title: "ServiceTitleRenewableUsage",
-        subtitle: "ServiceSubtitleRenewableUsage",
-        text: [
-            "energyCounselling",
-            "financing",
-            "pvCleaning",
-            "dismantlingDisposal",
-        ],
-    },
+  {
+    icon: iconWindmill,
+    image: windmillImage,
+    title: "SolarPVSystems",
+    subtitle: "ServiceSubtitleSolar",
+    text: ["sun", "wind", "water", "hydrogen"],
+  },
+  {
+    icon: iconBattery,
+    image: batteryImage,
+    title: "ServiceTitleWindTurbines",
+    subtitle: "ServiceSubtitleWindEnergy",
+    text: ["airHeat", "geothermalHeat", "ecoHeating"],
+  },
+  {
+    icon: iconPowerhouse,
+    image: powerhouseImage,
+    title: "ServiceTitleGreenHydrogen",
+    subtitle: "ServiceSubtitleSolarHydro",
+    text: ["eCars", "eBikes", "eHeating"],
+  },
+  {
+    icon: iconSetup,
+    image: setupImage,
+    title: "ServiceTitleRenewableUsage",
+    subtitle: "ServiceSubtitleRenewableUsage",
+    text: [
+      "energyCounselling",
+      "financing",
+      "pvCleaning",
+      "dismantlingDisposal",
+    ],
+  },
 ];

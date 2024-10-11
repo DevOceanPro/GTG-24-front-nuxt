@@ -1,27 +1,28 @@
 <template>
   <footer id="footer">
-    <Container>
+    <ContainerComponent>
       <div class="footer">
         <ul class="footer__lists">
           <li class="footer__contact">
-            <img src="@/assets/logo.svg" alt="logo"/>
+            <img src="@/assets/logo.svg" alt="logo" />
             <router-link to="/contact-us">
               Green Technology Germany GmbH
             </router-link>
             <router-link to="/contact-us">Neuer Wall 10</router-link>
             <router-link to="/contact-us">DE-20354 Hamburg</router-link>
           </li>
-          <li class="footer__list" v-for="(item, index) in items" :key="index">
-            <h4>
-              <p>{{ item.title }}</p>
-              <span></span>
-            </h4>
+          <li
+            v-for="(item, itemIndex) in items"
+            :key="itemIndex"
+            class="footer__list"
+          >
+            <h4>{{ item.title }}</h4>
             <ul>
-              <li v-for="(itemList, index) in item.list" :key="index">
-                <router-link :to="itemList.url" v-if="!itemList.target">
+              <li v-for="(itemList, listIndex) in item.list" :key="listIndex">
+                <router-link v-if="!itemList.target" :to="itemList.url">
                   {{ itemList.text }}
                 </router-link>
-                <a :href="itemList.url" target="_blank" v-else>
+                <a v-else :href="itemList.url" target="_blank">
                   {{ itemList.text }}
                 </a>
               </li>
@@ -29,28 +30,28 @@
           </li>
         </ul>
       </div>
-    </Container>
+    </ContainerComponent>
   </footer>
   <div class="description">
-    <Container>
+    <ContainerComponent>
       <div class="description__wrap">
         <p>{{ $t("Copyright") }}</p>
         <p>{{ $t("MadeInDevocean") }}</p>
       </div>
-    </Container>
+    </ContainerComponent>
   </div>
 </template>
 
 <script setup>
 // закоментовано поки стор не доступний
 //import { useLogin } from "@/stores/loginStore";
-import {ref, watchEffect} from 'vue';
-import {useI18n} from 'vue-i18n';
-import Container from "~/src/components/Reuseble/Container.vue";
+import { ref, watchEffect } from "vue";
+import { useI18n } from "vue-i18n";
+import ContainerComponent from "~/src/components/Reusable/ContainerComponent.vue";
 //закоментовано поки стор не доступний
 //const loginStore = useLogin();
-const loginStore = {}
-loginStore.roleName == "super-admin"
+const loginStore = {};
+loginStore.roleName == "super-admin";
 const items = ref([]);
 const i18n = useI18n();
 

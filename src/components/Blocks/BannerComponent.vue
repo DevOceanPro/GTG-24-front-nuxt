@@ -1,17 +1,40 @@
 <template>
   <div class="banner">
-    <Container>
-      <Swiper :pagination="{ clickable: true }" :autoplay="{ delay: 3000, disableOnInteraction: false }"
-              :modules="modules">
+    <ContainerComponent>
+      <Swiper
+        :pagination="{ clickable: true }"
+        :autoplay="{ delay: 3000, disableOnInteraction: false }"
+        :modules="modules"
+      >
         <SwiperSlide v-for="item in statisticBanners?.data" :key="item.id">
-          <div class="banner__slid" :style="{ background: `url(${isDesktop(item)})` }">
-            <div class="banner__content"
-                 v-if="item.title.length || item.text.length || item.textLinc.length || item.url.length || item.discount.length || item.discountText.length">
+          <div
+            class="banner__slid"
+            :style="{ background: `url(${isDesktop(item)})` }"
+          >
+            <div
+              v-if="
+                item.title.length ||
+                item.text.length ||
+                item.textLinc.length ||
+                item.url.length ||
+                item.discount.length ||
+                item.discountText.length
+              "
+              class="banner__content"
+            >
               <h2>{{ item.title }}</h2>
               <p>{{ item.text }}</p>
-              <Button v-if="item.textLinc.length" :disabled="item.url.length === 0" @click="reviewSite(item.url)"
-                      class="banner__content__btn" :text="item.textLinc"/>
-              <div v-if="item.discount.length || item.discountText.length" class="banner__circle">
+              <CustomButton
+                v-if="item.textLinc.length"
+                :disabled="item.url.length === 0"
+                class="banner__content__btn"
+                :text="item.textLinc"
+                @click="reviewSite(item.url)"
+              />
+              <div
+                v-if="item.discount.length || item.discountText.length"
+                class="banner__circle"
+              >
                 <div v-if="item.discount.length" class="circle">
                   <span>{{ item.discount }}</span>
                 </div>
@@ -23,7 +46,7 @@
           </div>
         </SwiperSlide>
       </Swiper>
-    </Container>
+    </ContainerComponent>
   </div>
 </template>
 
@@ -31,15 +54,16 @@
 import "swiper/css";
 import "swiper/css/pagination";
 
-import {Swiper, SwiperSlide} from "swiper/vue";
-import {Autoplay, Pagination} from "swiper/modules";
-import Container from "~/src/components/Reuseble/Container.vue";
-import Button from '~/src/components/Reuseble/Button.vue';
+import { Swiper, SwiperSlide } from "swiper/vue";
+import { Autoplay, Pagination } from "swiper/modules";
+import CustomButton from "~/src/components/Reusable/CustomButton.vue";
+import ContainerComponent from "~/src/components/Reusable/ContainerComponent.vue";
 
 const props = defineProps({
   statisticBanners: {
     type: Object,
     required: false,
+    default: () => ({}),
   },
 });
 
@@ -86,8 +110,6 @@ const isDesktop = (item) => {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/main.scss";
-
 :global(.swiper-pagination-bullet-active) {
   background-color: $green;
 }

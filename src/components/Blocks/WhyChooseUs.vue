@@ -1,7 +1,7 @@
 <template>
   <div class="why-choose-us">
-    <div class="why-choose-us__bg"></div>
-    <Container>
+    <div class="why-choose-us__bg" />
+    <ContainerComponent>
       <div class="content">
         <div class="content-left">
           <div class="content-left__title">
@@ -10,7 +10,7 @@
           </div>
           <ul class="content-left__list">
             <li class="content-left__item">
-              <img class="icon" src="@/assets/home/energy.svg" alt="energy"/>
+              <img class="icon" src="@/assets/home/energy.svg" alt="energy" />
               <div class="info">
                 <p class="info__title">{{ $t("WhyWeeChooseUl1") }}</p>
                 <p class="info__text">
@@ -20,9 +20,9 @@
             </li>
             <li class="content-left__item">
               <img
-                  class="icon"
-                  src="@/assets/home/technical.svg"
-                  alt="technical"
+                class="icon"
+                src="@/assets/home/technical.svg"
+                alt="technical"
               />
               <div class="info">
                 <p class="info__title">{{ $t("WhyWeeChooseUl22") }}</p>
@@ -39,24 +39,28 @@
                 <div class="circular-progress-bar">
                   <svg class="progress-ring" width="120" height="120">
                     <circle
-                        class="progress-ring-circle-default"
-                        :stroke-dasharray="circumference"
-                        :stroke-width="strokeWidth"
-                        :r="radius"
-                        cx="60"
-                        cy="60"
+                      class="progress-ring-circle-default"
+                      :stroke-dasharray="circumference"
+                      :stroke-width="strokeWidth"
+                      :r="radius"
+                      cx="60"
+                      cy="60"
                     />
                     <circle
-                        class="progress-ring-circle"
-                        :stroke-dasharray="circumference"
-                        :stroke-dashoffset="progressOffset(homePageStatistic?.projectsCompleted)"
-                        :stroke-width="strokeWidth"
-                        :r="radius"
-                        cx="60"
-                        cy="60"
+                      class="progress-ring-circle"
+                      :stroke-dasharray="circumference"
+                      :stroke-dashoffset="
+                        progressOffset(homePageStatistic?.projectsCompleted)
+                      "
+                      :stroke-width="strokeWidth"
+                      :r="radius"
+                      cx="60"
+                      cy="60"
                     />
                   </svg>
-                  <span class="progress-percentage">{{ homePageStatistic?.projectsCompleted }}%</span>
+                  <span class="progress-percentage"
+                    >{{ homePageStatistic?.projectsCompleted }}%</span
+                  >
                 </div>
                 <p>{{ $t("Projects") }}</p>
                 <p>{{ $t("Completed") }}</p>
@@ -65,24 +69,28 @@
                 <div class="circular-progress-bar">
                   <svg class="progress-ring" width="120" height="120">
                     <circle
-                        class="progress-ring-circle-default"
-                        :stroke-dasharray="circumference"
-                        :stroke-width="strokeWidth"
-                        :r="radius"
-                        cx="60"
-                        cy="60"
+                      class="progress-ring-circle-default"
+                      :stroke-dasharray="circumference"
+                      :stroke-width="strokeWidth"
+                      :r="radius"
+                      cx="60"
+                      cy="60"
                     />
                     <circle
-                        class="progress-ring-circle"
-                        :stroke-dasharray="circumference"
-                        :stroke-dashoffset="progressOffset(homePageStatistic?.clientsSatisfied)"
-                        :stroke-width="strokeWidth"
-                        :r="radius"
-                        cx="60"
-                        cy="60"
+                      class="progress-ring-circle"
+                      :stroke-dasharray="circumference"
+                      :stroke-dashoffset="
+                        progressOffset(homePageStatistic?.clientsSatisfied)
+                      "
+                      :stroke-width="strokeWidth"
+                      :r="radius"
+                      cx="60"
+                      cy="60"
                     />
                   </svg>
-                  <span class="progress-percentage">{{ homePageStatistic?.clientsSatisfied }}%</span>
+                  <span class="progress-percentage"
+                    >{{ homePageStatistic?.clientsSatisfied }}%</span
+                  >
                 </div>
                 <p>{{ $t("Clients") }}</p>
                 <p>{{ $t("Satisfied") }}</p>
@@ -91,24 +99,28 @@
                 <div class="circular-progress-bar">
                   <svg class="progress-ring" width="120" height="120">
                     <circle
-                        class="progress-ring-circle-default"
-                        :stroke-dasharray="circumference"
-                        :stroke-width="strokeWidth"
-                        :r="radius"
-                        cx="60"
-                        cy="60"
+                      class="progress-ring-circle-default"
+                      :stroke-dasharray="circumference"
+                      :stroke-width="strokeWidth"
+                      :r="radius"
+                      cx="60"
+                      cy="60"
                     />
                     <circle
-                        class="progress-ring-circle"
-                        :stroke-dasharray="circumference"
-                        :stroke-dashoffset="progressOffset(homePageStatistic?.kilowatts)"
-                        :stroke-width="strokeWidth"
-                        :r="radius"
-                        cx="60"
-                        cy="60"
+                      class="progress-ring-circle"
+                      :stroke-dasharray="circumference"
+                      :stroke-dashoffset="
+                        progressOffset(homePageStatistic?.kilowatts)
+                      "
+                      :stroke-width="strokeWidth"
+                      :r="radius"
+                      cx="60"
+                      cy="60"
                     />
                   </svg>
-                  <span class="progress-percentage">{{ homePageStatistic?.kilowatts }}kl</span>
+                  <span class="progress-percentage"
+                    >{{ homePageStatistic?.kilowatts }}kl</span
+                  >
                 </div>
                 <p>{{ $t("NumAndKilowatts") }}</p>
                 <p>{{ $t("ProvidedPeople") }}</p>
@@ -119,43 +131,47 @@
         </div>
         <div class="content-right">
           <p>{{ $t("belive") }}</p>
-          <form @submit.prevent="handleSubmit" class="form">
-            <img class="form-bg-element" src="@/assets/home/form-bg.svg" alt="bg-element"/>
+          <form class="form" @submit.prevent="handleSubmit">
+            <img
+              class="form-bg-element"
+              src="@/assets/home/form-bg.svg"
+              alt="bg-element"
+            />
             <div class="form__title">{{ $t("ContactUs") }}</div>
             <div class="form__input">
               <label for="name">{{ $t("YourName") }} *</label>
               <input
-                  type="text"
-                  id="name"
-                  v-model="formData.name"
-                  :placeholder="$t('YourName')"
-                  required
+                id="name"
+                v-model="formData.name"
+                type="text"
+                :placeholder="$t('YourName')"
+                required
               />
             </div>
             <div class="form__input">
               <label for="email">{{ $t("EmailAddress") }}</label>
               <input
-                  type="email"
-                  id="email"
-                  v-model="formData.email"
-                  :placeholder="$t('YourEmail')"
-                  required
+                id="email"
+                v-model="formData.email"
+                type="email"
+                :placeholder="$t('YourEmail')"
+                required
               />
             </div>
             <div class="form__textarea">
               <label for="message">{{ $t("Message") }}</label>
               <textarea
-                  id="message"
-                  v-model="formData.body"
-                  required
-                  maxlength="1500"
-              ></textarea>
+                id="message"
+                v-model="formData.body"
+                required
+                maxlength="1500"
+              />
             </div>
-            <Button
-                class="form__button"
-                type="submit"
-                name="green"
-                :text="$t('SengMessage')"
+            <CustomButton
+              class="form__button"
+              type="submit"
+              name="green"
+              :text="$t('SengMessage')"
             />
           </form>
           <div class="statistics-mobile">
@@ -165,27 +181,35 @@
                 <div class="circular-progress-bar">
                   <svg class="progress-ring" width="89" height="89">
                     <circle
-                        class="progress-ring-circle-default"
-                        :stroke-dasharray="circumferenceMobile"
-                        :stroke-width="strokeWidth"
-                        :r="radiusMobile"
-                        cx="40"
-                        cy="40"
+                      class="progress-ring-circle-default"
+                      :stroke-dasharray="circumferenceMobile"
+                      :stroke-width="strokeWidth"
+                      :r="radiusMobile"
+                      cx="40"
+                      cy="40"
                     />
                     <circle
-                        class="progress-ring-circle"
-                        :stroke-dasharray="circumferenceMobile"
-                        :stroke-dashoffset="progressOffset(homePageStatistic?.projectsCompleted)"
-                        :stroke-width="strokeWidth"
-                        :r="radiusMobile"
-                        cx="40"
-                        cy="40"
+                      class="progress-ring-circle"
+                      :stroke-dasharray="circumferenceMobile"
+                      :stroke-dashoffset="
+                        progressOffset(homePageStatistic?.projectsCompleted)
+                      "
+                      :stroke-width="strokeWidth"
+                      :r="radiusMobile"
+                      cx="40"
+                      cy="40"
                     />
                   </svg>
                   <span
-                      class="progress-percentage"
-                      :style="{ fontSize: homePageStatistic?.projectsCompleted.length < 5 ? '20px' : '12px' }"
-                  >{{ homePageStatistic?.projectsCompleted }}%</span>
+                    class="progress-percentage"
+                    :style="{
+                      fontSize:
+                        homePageStatistic?.projectsCompleted.length < 5
+                          ? '20px'
+                          : '12px',
+                    }"
+                    >{{ homePageStatistic?.projectsCompleted }}%</span
+                  >
                 </div>
                 <p>{{ $t("Projects") }}</p>
                 <p>{{ $t("Completed") }}</p>
@@ -194,27 +218,35 @@
                 <div class="circular-progress-bar">
                   <svg class="progress-ring" width="89" height="89">
                     <circle
-                        class="progress-ring-circle-default"
-                        :stroke-dasharray="circumferenceMobile"
-                        :stroke-width="strokeWidth"
-                        :r="radiusMobile"
-                        cx="40"
-                        cy="40"
+                      class="progress-ring-circle-default"
+                      :stroke-dasharray="circumferenceMobile"
+                      :stroke-width="strokeWidth"
+                      :r="radiusMobile"
+                      cx="40"
+                      cy="40"
                     />
                     <circle
-                        class="progress-ring-circle"
-                        :stroke-dasharray="circumferenceMobile"
-                        :stroke-dashoffset="progressOffset(homePageStatistic?.clientsSatisfied)"
-                        :stroke-width="strokeWidth"
-                        :r="radiusMobile"
-                        cx="40"
-                        cy="40"
+                      class="progress-ring-circle"
+                      :stroke-dasharray="circumferenceMobile"
+                      :stroke-dashoffset="
+                        progressOffset(homePageStatistic?.clientsSatisfied)
+                      "
+                      :stroke-width="strokeWidth"
+                      :r="radiusMobile"
+                      cx="40"
+                      cy="40"
                     />
                   </svg>
                   <span
-                      class="progress-percentage"
-                      :style="{ fontSize: homePageStatistic?.clientsSatisfied.length < 5 ? '20px' : '12px' }"
-                  >{{ homePageStatistic?.clientsSatisfied }}%</span>
+                    class="progress-percentage"
+                    :style="{
+                      fontSize:
+                        homePageStatistic?.clientsSatisfied.length < 5
+                          ? '20px'
+                          : '12px',
+                    }"
+                    >{{ homePageStatistic?.clientsSatisfied }}%</span
+                  >
                 </div>
                 <p>{{ $t("Clients") }}</p>
                 <p>{{ $t("Satisfied") }}</p>
@@ -223,27 +255,35 @@
                 <div class="circular-progress-bar">
                   <svg class="progress-ring" width="89" height="89">
                     <circle
-                        class="progress-ring-circle-default"
-                        :stroke-dasharray="circumferenceMobile"
-                        :stroke-width="strokeWidth"
-                        :r="radiusMobile"
-                        cx="40"
-                        cy="40"
+                      class="progress-ring-circle-default"
+                      :stroke-dasharray="circumferenceMobile"
+                      :stroke-width="strokeWidth"
+                      :r="radiusMobile"
+                      cx="40"
+                      cy="40"
                     />
                     <circle
-                        class="progress-ring-circle"
-                        :stroke-dasharray="circumferenceMobile"
-                        :stroke-dashoffset="progressOffset(homePageStatistic?.kilowatts)"
-                        :stroke-width="strokeWidth"
-                        :r="radiusMobile"
-                        cx="40"
-                        cy="40"
+                      class="progress-ring-circle"
+                      :stroke-dasharray="circumferenceMobile"
+                      :stroke-dashoffset="
+                        progressOffset(homePageStatistic?.kilowatts)
+                      "
+                      :stroke-width="strokeWidth"
+                      :r="radiusMobile"
+                      cx="40"
+                      cy="40"
                     />
                   </svg>
                   <span
-                      class="progress-percentage"
-                      :style="{ fontSize: homePageStatistic?.kilowatts.length < 5 ? '20px' : '16px' }"
-                  >{{ homePageStatistic?.kilowatts }}kl</span>
+                    class="progress-percentage"
+                    :style="{
+                      fontSize:
+                        homePageStatistic?.kilowatts.length < 5
+                          ? '20px'
+                          : '16px',
+                    }"
+                    >{{ homePageStatistic?.kilowatts }}kl</span
+                  >
                 </div>
                 <p>{{ $t("NumAndKilowatts") }}</p>
                 <p>{{ $t("ProvidedPeople") }}</p>
@@ -253,23 +293,23 @@
           </div>
         </div>
       </div>
-    </Container>
+    </ContainerComponent>
   </div>
 </template>
 
 <script setup>
-import Container from "~/src/components/Reuseble/Container.vue";
-import Button from "~/src/components/Reuseble/Button.vue";
+import CustomButton from "~/src/components/Reusable/CustomButton.vue";
+import ContainerComponent from "~/src/components/Reusable/ContainerComponent.vue";
 // import useContactUs from "@/stores/contactUsStore"; // закоментовано поки стор не доступний
 
-const props = defineProps(['homePageStatistic']);
+const props = defineProps(["homePageStatistic"]);
 
 // const useContactUs = useContactUs(); // закоментовано поки стор не доступний
 const formData = reactive({
-  name: '',
-  email: '',
-  body: '',
-  recaptcha_token: ''
+  name: "",
+  email: "",
+  body: "",
+  recaptcha_token: "",
 });
 
 const radius = computed(() => 55);
@@ -287,9 +327,9 @@ const handleSubmit = async () => {
   // formData.recaptcha_token = await this.$recaptcha() // Закомментировано
   // useContactUs.sendMessage(formData); // Закомментировано
   console.log(formData); // Заглушка
-  formData.name = '';
-  formData.email = '';
-  formData.body = '';
+  formData.name = "";
+  formData.email = "";
+  formData.body = "";
 };
 </script>
 

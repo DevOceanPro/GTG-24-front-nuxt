@@ -1,29 +1,29 @@
 <template>
   <div class="home-block">
-    <Container>
-      <h1 class="home-block__title" v-html="$t(`HomeTitle`)"></h1>
+    <ContainerComponent>
+      <h1 class="home-block__title" v-html="$t(`HomeTitle`)" />
       <div class="content">
         <div class="content__info">
           <p class="content__info__text">
             {{ $t("HomeDescr") }}
           </p>
           <div class="content__info__buttons">
-            <Button
-                @click="switchToOffersList"
-                type="button"
-                name="green"
-                :text="$t('FindCompany')"
+            <CustomButton
+              type="button"
+              name="green"
+              :text="$t('FindCompany')"
+              @click="switchToOffersList"
             />
-            <Button
-                @click="switchToLogin(1)"
-                type="button"
-                name="green-outline"
-                :text="$t('FindClient')"
+            <CustomButton
+              type="button"
+              name="green-outline"
+              :text="$t('FindClient')"
+              @click="switchToLogin(1)"
             />
           </div>
         </div>
         <div class="content__image">
-          <img src="@/assets/home/home-logo.svg" alt="home"/>
+          <img src="@/assets/home/home-logo.svg" alt="home" />
           <div class="content__image-text">
             <h3 class="content__image-text--title">
               {{ $t("firstBlockLogoTitle") }}
@@ -34,29 +34,27 @@
           </div>
         </div>
       </div>
-    </Container>
+    </ContainerComponent>
   </div>
 </template>
 
 <script setup>
-import {useRouter} from 'vue-router';
-import Button from "~/src/components/Reuseble/Button.vue";
-import Container from "~/src/components/Reuseble/Container.vue";
+import { useRouter } from "vue-router";
+import CustomButton from "~/src/components/Reusable/CustomButton.vue";
+import ContainerComponent from "~/src/components/Reusable/ContainerComponent.vue";
 
 const router = useRouter();
 
 function switchToLogin(value) {
-  router.push({path: "/register", query: {switchValue: value}});
+  router.push({ path: "/register", query: { switchValue: value } });
 }
 
 function switchToOffersList() {
-  router.push({path: "/user-request-send"});
+  router.push({ path: "/user-request-send" });
 }
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/main.scss";
-
 .home-block {
   margin-top: 140px;
 

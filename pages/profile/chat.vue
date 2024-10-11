@@ -1,5 +1,4 @@
 <template>
   <div>chat</div>
 </template>
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>

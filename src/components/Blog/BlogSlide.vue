@@ -1,27 +1,37 @@
 <template>
   <div class="blog-item">
     <div class="blog-item__first" style="position: relative">
-      <img height="220" class="blog-item__image user-select-none" :src="post.card_image" :alt="post.meta_card_image_alt"
-           @click="navigateToPost(post.slug)"/>
+      <img
+        height="220"
+        class="blog-item__image user-select-none"
+        :src="post.card_image"
+        :alt="post.meta_card_image_alt"
+        @click="navigateToPost(post.slug)"
+      />
       <div class="blog-item__hover" @click="navigateToPost(post.slug)">
         <div class="blog-item__hover__circle">
-          <div class="blog-item__hover__circle__link user-select-none" @click="navigateToPost(post.slug)">
-            <img :src="showMoreIcon"/>
+          <div
+            class="blog-item__hover__circle__link user-select-none"
+            @click="navigateToPost(post.slug)"
+          >
+            <img :src="showMoreIcon" />
             <span>Show</span>
           </div>
         </div>
       </div>
     </div>
     <div>
-      <h3 class="blog-item__title" @click="navigateToPost(post.slug)">{{ post.title }}</h3>
+      <h3 class="blog-item__title" @click="navigateToPost(post.slug)">
+        {{ post.title }}
+      </h3>
       <p class="blog-item__description">{{ post.description }}</p>
     </div>
   </div>
 </template>
 
 <script setup>
-import {useRouter} from 'vue-router';
-import showMore from '@/assets/show-more.svg';
+import { useRouter } from "vue-router";
+import showMore from "@/assets/show-more.svg";
 
 const props = defineProps({
   post: {

@@ -1,5 +1,20 @@
 <template>
-  <div>faq</div>
+  <div>
+    <TitleBar page="FAQ" variant="one" />
+    <FAQ />
+  </div>
 </template>
-<script setup lang="ts">
+
+<script>
+import { useHead } from "@unhead/vue";
+
+export default {
+  name: "FAQPage",
+  data() {
+    useHead({ title: "GTG 24" });
+    return {};
+  },
+  mounted() {},
+};
 </script>
+<style lang="scss"></style>

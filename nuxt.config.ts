@@ -1,29 +1,37 @@
-import { defineNuxtConfig } from 'nuxt/config'
-import vuetify from 'vite-plugin-vuetify'
+import { defineNuxtConfig } from "nuxt/config";
+import vuetify from "vite-plugin-vuetify";
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['@pinia/nuxt', "@nuxtjs/i18n"],
+  modules: ["@pinia/nuxt", "@nuxtjs/i18n"],
 
+  routeRules: {
+    "/": { redirect: "/home" },
+  },
 
-  css: [
-    'vuetify/styles',
-    '@mdi/font/css/materialdesignicons.min.css',
-    '@/assets/styles/main.scss',
-  ],
+  css: ["vuetify/styles", "@mdi/font/css/materialdesignicons.min.css"],
 
   build: {
-    transpile: ['vuetify'],
+    transpile: ["vuetify"],
   },
 
   vite: {
     ssr: {
-      noExternal: ['vuetify'],
+      noExternal: ["vuetify"],
     },
-    plugins: [
-      vuetify()
-    ],
+    plugins: [vuetify()],
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "~/assets/styles/main.scss" as *;',
+        },
+      },
+    },
   },
 
-  compatibilityDate: '2024-07-11',
-})
+  components: {
+    dirs: ["~/src/components/Blocks", "~/src/components/Reusable"],
+  },
+
+  compatibilityDate: "2024-07-11",
+});

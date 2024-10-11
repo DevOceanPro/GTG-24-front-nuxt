@@ -1,9 +1,9 @@
 <template>
-  <Modal ref="modal">
+  <CustomModal ref="modal">
     <div class="video-modal">
       <div class="video-modal__content">
         <button class="video-modal__content--close-btn" @click="hideModal">
-          <i class="icon-close"></i>
+          <i class="icon-close" />
         </button>
 
         <div class="video-modal__content--video">
@@ -13,48 +13,53 @@
             </video>
           </template>
           <img
-              v-if="isPlugVideo"
-              src="@/assets/video-placeholder.png"
-              alt="video-img"
+            v-if="isPlugVideo"
+            src="@/assets/video-placeholder.png"
+            alt="video-img"
           />
           <button
-              v-if="isPlugVideo"
-              @click="playVideo"
-              class="video-modal__content--video-play"
+            v-if="isPlugVideo"
+            class="video-modal__content--video-play"
+            @click="playVideo"
           >
             <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 150 150"
-                fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 150 150"
+              fill="none"
             >
               <rect width="150" height="150" rx="75" fill="white" />
               <path
-                  d="M97 73.2679C98.3333 74.0378 98.3333 75.9622 97 76.732L65.5 94.9186C64.1667 95.6884 62.5 94.7261 62.5 93.1865L62.5 56.8135C62.5 55.2739 64.1667 54.3116 65.5 55.0814L97 73.2679Z"
-                  fill="#4EA62F"
+                d="M97 73.2679C98.3333 74.0378 98.3333 75.9622 97 76.732L65.5 94.9186C64.1667 95.6884 62.5 94.7261 62.5 93.1865L62.5 56.8135C62.5 55.2739 64.1667 54.3116 65.5 55.0814L97 73.2679Z"
+                fill="#4EA62F"
               />
             </svg>
           </button>
         </div>
       </div>
     </div>
-  </Modal>
+  </CustomModal>
 </template>
 
 <script>
 import * as assert from "assert";
-import Button from "@/src/components/Reuseble/Button.vue";
-import Modal from "@/src/components/Reuseble/Modal.vue";
+import CustomModal from "~/src/components/Reusable/CustomModal.vue";
 
 export default {
   name: "VideoViewModal",
+  components: {
+    CustomModal,
+  },
+  data() {
+    return {
+      isPlugVideo: true,
+      isModalOpen: false,
+      currentVideo: "",
+    };
+  },
   computed: {
     assert() {
       return assert;
     },
-  },
-  components: {
-    Button,
-    Modal,
   },
   methods: {
     showModal(video) {
@@ -74,13 +79,6 @@ export default {
     videoEnded() {
       this.isPlugVideo = true;
     },
-  },
-  data() {
-    return {
-      isPlugVideo: true,
-      isModalOpen: false,
-      currentVideo: "",
-    };
   },
 };
 </script>
