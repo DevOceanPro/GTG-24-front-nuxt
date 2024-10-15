@@ -1,27 +1,28 @@
 <template>
   <footer id="footer">
-    <Container>
+    <ContainerComponent>
       <div class="footer">
         <ul class="footer__lists">
           <li class="footer__contact">
-            <img src="@/assets/logo.svg" alt="logo" />
+            <NuxtImg src="/images/logo.svg" alt="logo" />
             <router-link to="/contact-us">
               Green Technology Germany GmbH
             </router-link>
             <router-link to="/contact-us">Neuer Wall 10</router-link>
             <router-link to="/contact-us">DE-20354 Hamburg</router-link>
           </li>
-          <li class="footer__list" v-for="(item, index) in items" :key="index">
-            <h4>
-              <p>{{ item.title }}</p>
-              <span></span>
-            </h4>
+          <li
+            v-for="(item, itemIndex) in items"
+            :key="itemIndex"
+            class="footer__list"
+          >
+            <h4>{{ item.title }}</h4>
             <ul>
-              <li v-for="(itemList, index) in item.list" :key="index">
-                <router-link :to="itemList.url" v-if="!itemList.target">
+              <li v-for="(itemList, listIndex) in item.list" :key="listIndex">
+                <router-link v-if="!itemList.target" :to="itemList.url">
                   {{ itemList.text }}
                 </router-link>
-                <a :href="itemList.url" target="_blank" v-else>
+                <a v-else :href="itemList.url" target="_blank">
                   {{ itemList.text }}
                 </a>
               </li>
@@ -29,27 +30,27 @@
           </li>
         </ul>
       </div>
-    </Container>
+    </ContainerComponent>
   </footer>
   <div class="description">
-    <Container>
+    <ContainerComponent>
       <div class="description__wrap">
         <p>{{ $t("Copyright") }}</p>
         <p>{{ $t("MadeInDevocean") }}</p>
       </div>
-    </Container>
+    </ContainerComponent>
   </div>
 </template>
 
 <script setup>
+// закоментовано поки стор не доступний
 //import { useLogin } from "@/stores/loginStore";
-import { ref, watchEffect } from 'vue';
-import { useI18n } from 'vue-i18n';
-import Container from "~/src/components/Reuseble/Container.vue";
-
+import { ref, watchEffect } from "vue";
+import { useI18n } from "vue-i18n";
+//закоментовано поки стор не доступний
 //const loginStore = useLogin();
-const loginStore ={}
-loginStore.roleName == "super-admin"
+const loginStore = {};
+loginStore.roleName == "super-admin";
 const items = ref([]);
 const i18n = useI18n();
 
@@ -295,10 +296,9 @@ watchEffect(() => {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/main.scss";
 #footer {
   background-color: rgba(29, 29, 41, 0.9);
-  background-image: url(@/assets/footer-bg.png);
+  background-image: url(public/images/footer-bg.png);
   background-size: cover;
   padding: 100px 0;
   @media (max-width: 991px) {
@@ -315,10 +315,12 @@ watchEffect(() => {
     gap: 40px;
     text-align: center;
   }
+
   &__contact {
     img {
       margin-bottom: 32px;
     }
+
     a {
       display: block;
       color: #9898a0;
@@ -332,6 +334,7 @@ watchEffect(() => {
       }
     }
   }
+
   &__lists {
     @include flex(row, space-between, start);
     width: 100%;
@@ -342,6 +345,7 @@ watchEffect(() => {
       gap: 40px;
     }
   }
+
   &__list {
     h4 {
       display: inline-block;
@@ -365,6 +369,7 @@ watchEffect(() => {
           text-align: center;
         }
       }
+
       span {
         display: block;
         width: 25px;
@@ -377,9 +382,11 @@ watchEffect(() => {
         }
       }
     }
+
     ul > li:not(:last-child) {
       margin-bottom: 6px;
     }
+
     ul > li > a {
       color: #9898a0;
       font-family: $font-main;
@@ -392,14 +399,17 @@ watchEffect(() => {
     }
   }
 }
+
 .description {
   padding: 16px 0 15px 0;
   background: #1d1d29;
+
   &__wrap {
     text-align: center;
     @media (max-width: 991px) {
       @include flex(row, space-between, center);
     }
+
     p {
       color: #9898a0;
       font-family: $font-main;
@@ -411,6 +421,7 @@ watchEffect(() => {
         font-size: 10px;
       }
     }
+
     p:last-child {
       display: none;
       @media (max-width: 991px) {

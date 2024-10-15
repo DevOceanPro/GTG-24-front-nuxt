@@ -1,7 +1,7 @@
 <template>
-  <div>home</div>
+  <HomePage />
 </template>
 
-<script setup>
+<script setup></script>
 
-</script>
+<style lang="scss"></style>
