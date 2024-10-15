@@ -57,7 +57,6 @@ export default {
 </template>
 
 <style scoped lang="scss">
-@import "@/assets/styles/main.scss";
 .modal-backdrop {
   z-index: 100;
   @include flex(row, center, center);

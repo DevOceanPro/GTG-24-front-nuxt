@@ -4,7 +4,7 @@
       <div class="footer">
         <ul class="footer__lists">
           <li class="footer__contact">
-            <img src="@/assets/logo.svg" alt="logo" />
+            <NuxtImg src="/images/logo.svg" alt="logo" />
             <router-link to="/contact-us">
               Green Technology Germany GmbH
             </router-link>
@@ -47,7 +47,6 @@
 //import { useLogin } from "@/stores/loginStore";
 import { ref, watchEffect } from "vue";
 import { useI18n } from "vue-i18n";
-import ContainerComponent from "~/src/components/Reusable/ContainerComponent.vue";
 //закоментовано поки стор не доступний
 //const loginStore = useLogin();
 const loginStore = {};
@@ -297,11 +296,9 @@ watchEffect(() => {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/main.scss";
-
 #footer {
   background-color: rgba(29, 29, 41, 0.9);
-  background-image: url(@/assets/footer-bg.png);
+  background-image: url(public/images/footer-bg.png);
   background-size: cover;
   padding: 100px 0;
   @media (max-width: 991px) {

@@ -56,8 +56,6 @@
 <script setup>
 import { ref } from "vue";
 import { useI18n } from "vue-i18n";
-import CustomButton from "~/src/components/Reusable/CustomButton.vue";
-import CustomModal from "~/src/components/Reusable/CustomModal.vue";
 
 // закоментовано поки стор не доступний
 // import useReview from "@/stores/reviewStore";
@@ -90,8 +88,6 @@ async function submitForm() {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/main.scss";
-
 .modal {
   position: relative;
 

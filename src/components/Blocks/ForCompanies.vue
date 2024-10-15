@@ -29,7 +29,6 @@
 
 <script setup>
 import { defineProps } from "vue";
-import ContainerComponent from "~/src/components/Reusable/ContainerComponent.vue";
 
 const props = defineProps({
   object: {
@@ -42,14 +41,14 @@ const props = defineProps({
 <style lang="scss" scoped>
 .content {
   position: relative;
-  background-image: url(@/assets/home/for-companies_2.jpg);
+  background-image: url(public/images/home/for-companies_2.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   border-radius: 20px;
   overflow: hidden;
   @media (max-width: 768px) {
-    background-image: url(@/assets/home/for-companies_2_mob.png);
+    background-image: url(public/images/home/for-companies_2_mob.png);
   }
 
   &::after {

@@ -5,16 +5,10 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { useHead } from "@unhead/vue";
 
-export default {
-  name: "FAQPage",
-  data() {
-    useHead({ title: "GTG 24" });
-    return {};
-  },
-  mounted() {},
-};
+useHead({ title: "GTG 24" });
 </script>
-<style lang="scss"></style>
+
+<style lang="scss" scoped></style>

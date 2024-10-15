@@ -2,17 +2,17 @@
   <div class="blog-slider">
     <v-slide-group class="blog-slider__group" :show-arrows="true">
       <template #next>
-        <img
+        <NuxtImg
           class="user-select-none slider-arrow"
           alt="lens"
-          :src="greenArrowRight"
+          src="/images/green-arrow-right.svg"
         />
       </template>
       <template #prev>
-        <img
+        <NuxtImg
           class="user-select-none slider-arrow"
           alt="lens"
-          :src="greenArrowLeft"
+          src="/images/green-arrow-left.svg"
         />
       </template>
 
@@ -31,9 +31,6 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
-import greenArrowLeft from "@/assets/green-arrow-left.svg";
-import greenArrowRight from "@/assets/green-arrow-right.svg";
-import BlogSlide from "~/src/components/Blog/BlogSlide.vue";
 import queryString from "query-string";
 // import { useBlog } from '@/stores/blogStore'; // Закоментовано до переноса стора
 
@@ -65,8 +62,6 @@ onMounted(fetchBlogPosts);
 </script>
 
 <style scoped lang="scss">
-@import "@/assets/styles/main.scss";
-
 .blog-slider {
   &__group {
     :deep {

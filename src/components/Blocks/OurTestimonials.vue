@@ -71,7 +71,7 @@
       </Swiper>
     </div>
   </div>
-  <testimonial-modal ref="modal" :use-review="useReview" />
+  <TestimonialModal ref="modal" :use-review="useReview" />
 </template>
 
 <script setup>
@@ -87,7 +87,6 @@ import { Autoplay, Navigation } from "swiper/modules";
 // import useReview from '@/stores/reviewStore';
 
 import TestimonialModal from "~/src/components/Modal/TestimonialsModal.vue";
-import CustomButton from "~/src/components/Reusable/CustomButton.vue";
 
 const { t } = useI18n();
 // const useReview = ref(useReview()); // закоментовано поки стор не доступний
@@ -125,7 +124,7 @@ const sendMessage = () => {
   max-width: 70%;
   overflow: hidden;
   text-overflow: ellipsis;
-  text-wrap: none;
+  text-wrap: nowrap;
   margin-top: 10px;
   position: absolute;
   bottom: 10px;

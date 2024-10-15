@@ -2,8 +2,6 @@
   <HomePage />
 </template>
 
-<script setup>
-import HomePage from "~/src/views/HomePage.vue";
-</script>
+<script setup></script>
 
 <style lang="scss"></style>

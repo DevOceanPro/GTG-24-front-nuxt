@@ -2,16 +2,16 @@
   <div class="partners">
     <div v-if="isMobileDevice" class="partners__mobile-hints">
       <div class="partners__mobile-hints--top">
-        <img
+        <NuxtImg
           class="partners__mobile-hints--top-icon"
-          :src="icons.HoverIcon"
+          src="/images/icons/partners/hover-here.svg"
           alt="hints hover icon"
         />
         <span class="partners__mobile-hints--top-text">{{
           $t("clickHere")
         }}</span>
       </div>
-      <img
+      <NuxtImg
         class="partners__mobile-hints--bottom"
         :src="icons.WavyArrow"
         alt="hints wavy arrow icon"
@@ -29,16 +29,16 @@
       <div class="partners__cards">
         <div v-if="!isMobileDevice" class="partners__hints">
           <div class="partners__hints--top">
-            <img
+            <NuxtImg
               class="partners__hints--top-icon"
-              :src="icons.HoverIcon"
+              src="/images/icons/partners/hover-here.svg"
               alt="hints hover icon"
             />
             <span class="partners__hints--top-text">{{ $t("hoverHere") }}</span>
           </div>
-          <img
+          <NuxtImg
             class="partners__hints--bottom"
-            :src="icons.WavyArrow"
+            src="/images/icons/partners/wavy-arrow.svg"
             alt="hints wavy arrow icon"
           />
         </div>
@@ -89,7 +89,10 @@
                 <div class="card__icons--second" />
                 <div class="card__icons--third" />
                 <div class="card__icons--fourth">
-                  <img :src="icons.PlayIcon" alt="play icon" />
+                  <NuxtImg
+                    src="/images/icons/buttons/play.svg"
+                    alt="play icon"
+                  />
                 </div>
               </div>
             </div>
@@ -109,57 +112,44 @@ import { useCookies } from "vue3-cookies";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Pagination } from "swiper/modules";
 
-import VideoViewModal from "@/src/components/Modal/VideoViewModal.vue";
-
-import HoverIcon from "@/assets/icons/partners/hover-here.svg";
-import WavyArrow from "@/assets/icons/partners/wavy-arrow.svg";
-import PlayIcon from "@/assets/icons/buttons/play.svg";
-import defaultVideoImage from "../../assets/video-placeholder.png";
+import defaultVideoImage from "public/images/video-placeholder.png";
 
 // DE videos
-import stepRegistrationVideoDe1 from "../../assets/video/step-registration/step-de-1.mp4";
-import stepRegistrationVideoDe2 from "../../assets/video/step-registration/step-de-2.mp4";
-import stepRegistrationVideoDe3 from "../../assets/video/step-registration/step-de-3.mp4";
-import stepRegistrationVideoDe4 from "../../assets/video/step-registration/step-de-4.mp4";
-import stepRegistrationVideoDe5 from "../../assets/video/step-registration/step-de-5.mp4";
-import stepRegistrationVideoDe6 from "../../assets/video/step-registration/step-de-6.mp4";
-import stepRegistrationVideoDe7 from "../../assets/video/step-registration/step-de-7.mp4";
+import stepRegistrationVideoDe1 from "public/images/video/step-registration/step-de-1.mp4";
+import stepRegistrationVideoDe2 from "public/images/video/step-registration/step-de-2.mp4";
+import stepRegistrationVideoDe3 from "public/images/video/step-registration/step-de-3.mp4";
+import stepRegistrationVideoDe4 from "public/images/video/step-registration/step-de-4.mp4";
+import stepRegistrationVideoDe5 from "public/images/video/step-registration/step-de-5.mp4";
+import stepRegistrationVideoDe6 from "public/images/video/step-registration/step-de-6.mp4";
+import stepRegistrationVideoDe7 from "public/images/video/step-registration/step-de-7.mp4";
 // EN videos
-import stepRegistrationVideoEn1 from "../../assets/video/step-registration/step-en-1.mp4";
-import stepRegistrationVideoEn2 from "../../assets/video/step-registration/step-en-2.mp4";
-import stepRegistrationVideoEn3 from "../../assets/video/step-registration/step-en-3.mp4";
-import stepRegistrationVideoEn4 from "../../assets/video/step-registration/step-en-4.mp4";
-import stepRegistrationVideoEn5 from "../../assets/video/step-registration/step-en-5.mp4";
-import stepRegistrationVideoEn6 from "../../assets/video/step-registration/step-en-6.mp4";
-import stepRegistrationVideoEn7 from "../../assets/video/step-registration/step-en-7.mp4";
+import stepRegistrationVideoEn1 from "public/images/video/step-registration/step-en-1.mp4";
+import stepRegistrationVideoEn2 from "public/images/video/step-registration/step-en-2.mp4";
+import stepRegistrationVideoEn3 from "public/images/video/step-registration/step-en-3.mp4";
+import stepRegistrationVideoEn4 from "public/images/video/step-registration/step-en-4.mp4";
+import stepRegistrationVideoEn5 from "public/images/video/step-registration/step-en-5.mp4";
+import stepRegistrationVideoEn6 from "public/images/video/step-registration/step-en-6.mp4";
+import stepRegistrationVideoEn7 from "public/images/video/step-registration/step-en-7.mp4";
 
-import stepRegistration1 from "../../assets/img/step-registration/step-1.jpeg";
-import stepRegistration2 from "../../assets/img/step-registration/step-2.jpeg";
-import stepRegistration3 from "../../assets/img/step-registration/step-3.jpeg";
-import stepRegistration4 from "../../assets/img/step-registration/step-4.jpeg";
-import stepRegistration5 from "../../assets/img/step-registration/step-5.jpeg";
-import stepRegistration6 from "../../assets/img/step-registration/step-6.jpeg";
-import stepRegistration7 from "../../assets/img/step-registration/step-7.jpeg";
+import stepRegistration1 from "public/images/img/step-registration/step-1.jpeg";
+import stepRegistration2 from "public/images/img/step-registration/step-2.jpeg";
+import stepRegistration3 from "public/images/img/step-registration/step-3.jpeg";
+import stepRegistration4 from "public/images/img/step-registration/step-4.jpeg";
+import stepRegistration5 from "public/images/img/step-registration/step-5.jpeg";
+import stepRegistration6 from "public/images/img/step-registration/step-6.jpeg";
+import stepRegistration7 from "public/images/img/step-registration/step-7.jpeg";
 
 import { PARTNERS_SLIDER_BREAKPOINTS } from "../../core/mock-data/partners/partners_mock_data";
 import { isMobileBrowser } from "~/src/utils/helpers/isMobileBrowser.js";
-import ContainerComponent from "~/src/components/Reusable/ContainerComponent.vue";
 
 export default {
   name: "OurPartners",
   components: {
-    ContainerComponent,
-    VideoViewModal,
     Swiper,
     SwiperSlide,
   },
   data() {
     return {
-      icons: {
-        HoverIcon,
-        WavyArrow,
-        PlayIcon,
-      },
       modules: [Pagination],
       sliderBreakPoints: PARTNERS_SLIDER_BREAKPOINTS,
       partners: [

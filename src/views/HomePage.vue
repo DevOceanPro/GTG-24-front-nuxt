@@ -36,20 +36,6 @@ import { ref, onMounted, onBeforeUnmount } from "vue";
 // import { useStatisticStore, statisticEvent, statisticName } from "@/stores/statisticStore";
 import { useHead } from "@unhead/vue";
 import { useI18n } from "vue-i18n";
-// Importing components
-import HomeBlock from "~/src/components/Blocks/HomeBlock.vue";
-import OurOpportunities from "~/src/components/Blocks/OurOpportunities.vue";
-import ForClients from "~/src/components/Blocks/ForClients.vue";
-import ForCompanies from "~/src/components/Blocks/ForCompanies.vue";
-import WhyUs from "~/src/components/Blocks/WhyUs.vue";
-import WhyChooseUs from "~/src/components/Blocks/WhyChooseUs.vue";
-import OurClients from "~/src/components/Blocks/OurClients.vue";
-import OurTestimonials from "~/src/components/Blocks/OurTestimonials.vue";
-import Loader from "~/src/components/Reusable/AnimationBlock.vue";
-import BannerComponent from "~/src/components/Blocks/BannerComponent.vue";
-import OurPartners from "~/src/components/Blocks/OurPartners.vue";
-import SocialComponent from "~/src/components/Blocks/SocialComponent.vue";
-import ContainerComponent from "~/src/components/Reusable/ContainerComponent.vue";
 
 useHead({ title: "GTG 24" });
 const { t } = useI18n();
@@ -174,8 +160,6 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/main.scss";
-
 .loader {
   position: absolute;
   top: 0;

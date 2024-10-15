@@ -10,7 +10,7 @@
           class="social__item"
         >
           <a class="social__item-wrapper" :href="to" target="_blank">
-            <img class="social__item-icon" :src="icon" />
+            <NuxtImg class="social__item-icon" :src="icon" />
             <p class="social__item-text">{{ text }}</p>
           </a>
         </div>
@@ -24,9 +24,7 @@
 <script setup>
 import { ref } from "vue";
 import { useI18n } from "vue-i18n";
-import SocialSlider from "~/src/components/Sliders/SocialSlider/SocialSlider.vue";
 import { socialLinks } from "~/src/components/Sliders/SocialSlider/data.js";
-import ContainerComponent from "~/src/components/Reusable/ContainerComponent.vue";
 
 const { t } = useI18n();
 const links = ref(socialLinks);

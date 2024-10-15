@@ -6,93 +6,23 @@
         <li class="faq__col">
           <ul class="faq__list">
             <li
+              v-for="(question, index) in generalQuestions.slice(0, 5)"
+              :key="index"
               class="faq__item"
-              :class="{ active: generalQuestions[0].active }"
+              :class="{ active: question.active }"
             >
               <div
                 class="faq__item__title"
-                @click="toggleClass(generalQuestions, 0)"
+                :aria-expanded="question.active"
+                tabindex="0"
+                role="button"
+                @click="toggleClass(index)"
               >
-                <h5>{{ $t("q1") }}</h5>
+                <h5>{{ $t(`q${index + 1}`) }}</h5>
                 <i class="icon-chevron-down" />
               </div>
-              <p
-                class="faq__item__text"
-                :class="{ active2: generalQuestions[0].active }"
-              >
-                {{ $t("a1") }}
-              </p>
-            </li>
-            <li
-              class="faq__item"
-              :class="{ active: generalQuestions[1].active }"
-            >
-              <div
-                class="faq__item__title"
-                @click="toggleClass(generalQuestions, 1)"
-              >
-                <h5>{{ $t("q2") }}</h5>
-                <i class="icon-chevron-down" />
-              </div>
-              <p
-                class="faq__item__text"
-                :class="{ active2: generalQuestions[1].active }"
-              >
-                {{ $t("a2") }}
-              </p>
-            </li>
-            <li
-              class="faq__item"
-              :class="{ active: generalQuestions[2].active }"
-            >
-              <div
-                class="faq__item__title"
-                @click="toggleClass(generalQuestions, 2)"
-              >
-                <h5>{{ $t("q3") }}</h5>
-                <i class="icon-chevron-down" />
-              </div>
-              <p
-                class="faq__item__text"
-                :class="{ active2: generalQuestions[2].active }"
-              >
-                {{ $t("a3") }}
-              </p>
-            </li>
-            <li
-              class="faq__item"
-              :class="{ active: generalQuestions[3].active }"
-            >
-              <div
-                class="faq__item__title"
-                @click="toggleClass(generalQuestions, 3)"
-              >
-                <h5>{{ $t("q4") }}</h5>
-                <i class="icon-chevron-down" />
-              </div>
-              <p
-                class="faq__item__text"
-                :class="{ active2: generalQuestions[3].active }"
-              >
-                {{ $t("a4") }}
-              </p>
-            </li>
-            <li
-              class="faq__item"
-              :class="{ active: generalQuestions[4].active }"
-            >
-              <div
-                class="faq__item__title"
-                @click="toggleClass(generalQuestions, 4)"
-              >
-                <h5>{{ $t("q5") }}</h5>
-                <i class="icon-chevron-down" />
-              </div>
-              <p
-                class="faq__item__text"
-                :class="{ active2: generalQuestions[4].active }"
-              >
-                {{ $t("a5") }}
+              <p class="faq__item__text" :class="{ active2: question.active }">
+                {{ $t(`a${index + 1}`) }}
               </p>
             </li>
           </ul>
@@ -100,21 +30,23 @@
         <li class="faq__col">
           <ul class="faq__list">
             <li
+              v-for="(question, index) in generalQuestions.slice(5)"
+              :key="index + 5"
               class="faq__item"
-              :class="{ active: generalQuestions[5].active }"
+              :class="{ active: question.active }"
             >
               <div
                 class="faq__item__title"
-                @click="toggleClass(generalQuestions, 5)"
+                :aria-expanded="question.active"
+                tabindex="0"
+                role="button"
+                @click="toggleClass(index + 5)"
               >
-                <h5>{{ $t("q6") }}</h5>
+                <h5>{{ $t(`q${index + 6}`) }}</h5>
                 <i class="icon-chevron-down" />
               </div>
-              <p
-                class="faq__item__text"
-                :class="{ active2: generalQuestions[5].active }"
-              >
-                {{ $t("a6") }}
+              <p class="faq__item__text" :class="{ active2: question.active }">
+                {{ $t(`a${index + 6}`) }}
               </p>
             </li>
           </ul>
@@ -125,27 +57,19 @@
 </template>
 
 <script>
-import ContainerComponent from "~/src/components/Reusable/ContainerComponent.vue";
-
 export default {
   name: "FAQ",
-  components: { ContainerComponent },
   data() {
     return {
-      generalQuestions: [
-        { active: false },
-        { active: false },
-        { active: false },
-        { active: false },
-        { active: false },
-        { active: false },
-        { active: false },
-      ],
+      generalQuestions: Array(6)
+        .fill()
+        .map(() => ({ active: false })),
     };
   },
   methods: {
-    toggleClass(section, index) {
-      section[index].active = !section[index].active;
+    toggleClass(index) {
+      this.generalQuestions[index].active =
+        !this.generalQuestions[index].active;
     },
   },
 };
@@ -155,14 +79,17 @@ export default {
 .faq {
   padding-top: 72px;
   padding-bottom: 187px;
+
   @media (max-width: 991px) {
     padding-top: 40px;
     padding-bottom: 80px;
   }
+
   &__columns {
     @include flex(row, space-between, flex-start);
     gap: 100px;
     width: 100%;
+
     @media (max-width: 991px) {
       @include flex(column, space-between, center);
       gap: 20px;
@@ -170,8 +97,13 @@ export default {
   }
 
   &__col {
-    width: 100%;
+    width: 50%;
+
+    @media (max-width: 991px) {
+      width: 100%;
+    }
   }
+
   &__title {
     color: $black;
     font-family: $font-main;
@@ -179,46 +111,52 @@ export default {
     font-weight: 600;
     line-height: 130%;
     margin-bottom: 20px;
+
     @media (max-width: 991px) {
       font-size: 20px;
     }
   }
+
   &__list {
     @include flex(column, center, center);
     gap: 20px;
     width: 100%;
   }
+
   &__item {
     width: 100%;
-    //height: 66px;
     padding: 20px;
     border-radius: 10px;
     border: 1px solid $green;
     overflow: hidden;
     @include transition;
+
     @media (max-width: 991px) {
       height: 64px;
     }
+
     &__title {
       @include flex(row, space-between, flex-start);
-      @media (max-width: 991px) {
-      }
+
       h5 {
         color: $black;
         font-family: $font-main;
         font-size: 20px;
         font-weight: 500;
         line-height: 130%;
+
         @media (max-width: 991px) {
           font-size: 14px;
         }
       }
+
       i {
         @include transition;
         font-size: 20px;
         cursor: pointer;
       }
     }
+
     &__text {
       margin-top: 16px;
       display: none;
@@ -226,6 +164,7 @@ export default {
       font-family: $font-main;
       font-weight: 400;
       line-height: 150%;
+
       @media (max-width: 991px) {
         margin-top: 19px;
         font-size: 12px;
@@ -233,18 +172,16 @@ export default {
     }
   }
 }
+
 .active {
   height: fit-content;
 }
+
 .active2 {
   display: block;
 }
+
 .faq__item.active i {
   transform: rotate(-180deg);
-}
-@media (min-width: 990px) {
-  .faq__col {
-    width: 50%;
-  }
 }
 </style>

@@ -3,7 +3,7 @@ import vuetify from "vite-plugin-vuetify";
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ["@pinia/nuxt", "@nuxtjs/i18n"],
+  modules: ["@pinia/nuxt", "@nuxtjs/i18n", "@nuxt/image"],
 
   routeRules: {
     "/": { redirect: "/home" },
@@ -30,7 +30,14 @@ export default defineNuxtConfig({
   },
 
   components: {
-    dirs: ["~/src/components/Blocks", "~/src/components/Reusable"],
+    dirs: [
+      "~/src/components/Blocks",
+      "~/src/components/Reusable",
+      "~/src/components/Blog",
+      "~/src/components/Modal",
+      "~/src/components/Sliders/SocialSlider",
+      "~/src/views",
+    ],
   },
 
   compatibilityDate: "2024-07-11",

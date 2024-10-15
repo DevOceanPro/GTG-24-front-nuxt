@@ -31,7 +31,7 @@
           </ul>
         </div>
         <div class="content__map">
-          <img src="@/assets/home/map.svg" alt="map" />
+          <NuxtImg src="/images/home/map.svg" alt="map" />
         </div>
       </div>
     </ContainerComponent>
@@ -41,7 +41,6 @@
 <script setup>
 import { ref } from "vue";
 import { useI18n } from "vue-i18n";
-import ContainerComponent from "~/src/components/Reusable/ContainerComponent.vue";
 
 // const homePageStatistic = ref(null); // Замінити на рельну логіку
 // закоментовано для переноса
@@ -56,7 +55,7 @@ const { t } = useI18n();
 <style lang="scss" scoped>
 .our-clients {
   padding: 80px 0;
-  background-image: url(@/assets/our-clients-bg.png);
+  background-image: url(public/images/our-clients-bg.png);
   background-size: cover;
   background-position: bottom;
   @media (max-width: 991px) {
@@ -65,9 +64,8 @@ const { t } = useI18n();
         0deg,
         rgba(0, 0, 0, 0.3) 0%,
         rgba(0, 0, 0, 0.3) 100%
-      ),
-      url(@/assets/our-clients-bg-mobile.jfif);
-    background-position: center;
+      )
+      url(public/images/our-clients-bg-mobile.jfif) center;
     background-size: cover;
   }
 }

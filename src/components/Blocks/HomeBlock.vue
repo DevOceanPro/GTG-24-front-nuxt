@@ -23,7 +23,7 @@
           </div>
         </div>
         <div class="content__image">
-          <img src="@/assets/home/home-logo.svg" alt="home" />
+          <NuxtImg src="/images/home/home-logo.svg" alt="home" />
           <div class="content__image-text">
             <h3 class="content__image-text--title">
               {{ $t("firstBlockLogoTitle") }}
@@ -40,8 +40,6 @@
 
 <script setup>
 import { useRouter } from "vue-router";
-import CustomButton from "~/src/components/Reusable/CustomButton.vue";
-import ContainerComponent from "~/src/components/Reusable/ContainerComponent.vue";
 
 const router = useRouter();
 

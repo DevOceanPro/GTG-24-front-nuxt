@@ -4,7 +4,7 @@
       <nav class="header">
         <div class="header__logo">
           <NuxtLink to="/">
-            <img alt="logo" src="~/assets/logo.svg" />
+            <NuxtImg alt="logo" src="/images/logo.svg" />
           </NuxtLink>
         </div>
         <div class="wrap">
@@ -111,7 +111,12 @@
               class="wrap__right--chat"
               @click="goToChat"
             >
-              <img alt="chat" :src="icons.chats" />
+              <NuxtImg
+                alt="chat"
+                src="/images/company/chats.svg"
+                width="25"
+                height="24"
+              />
               <div
                 v-if="!!notificationCount"
                 class="wrap__right--chat--notification"
@@ -140,7 +145,12 @@
                   @keyup.enter="searchCompany"
                 >
                   <template #prepend-inner>
-                    <img alt="lens" :src="icons.lensGreen" />
+                    <NuxtImg
+                      alt="lens"
+                      src="/images/chat/lens-green.svg"
+                      width="20"
+                      height="20"
+                    />
                   </template>
                   <template #append-inner>
                     <v-icon @click="clearSearch">mdi-close</v-icon>
@@ -154,7 +164,12 @@
                   density="compact"
                   @click="openSearch"
                 >
-                  <img alt="lens" :src="icons.lensGreen" />
+                  <NuxtImg
+                    alt="lens"
+                    src="/images/chat/lens-green.svg"
+                    width="20"
+                    height="20"
+                  />
                 </v-btn>
               </div>
             </div>
@@ -218,7 +233,7 @@
                     class="header__login__info__profile-user"
                     @click="toggleMenu"
                   >
-                    <img
+                    <NuxtImg
                       :src="getCompanyLogo"
                       alt=""
                       class="header__login__info__avatar"
@@ -236,7 +251,7 @@
                       class="header__login__info__profile-user"
                       @click="toggleMenu"
                     >
-                      <img
+                      <NuxtImg
                         :src="getCompanyLogo"
                         alt=""
                         class="header__login__info__avatar"
@@ -251,10 +266,13 @@
                         class="header__login__info__item"
                         to="/dashboard"
                       >
-                        <img
+                        <NuxtImg
                           alt="profile"
-                          src="~/assets/header/profile.svg"
-                        /><span>{{ $t("Profile") }}</span>
+                          src="/images/header/profile.svg"
+                          width="24"
+                          height="24"
+                        />
+                        <span>{{ $t("Profile") }}</span>
                       </NuxtLink>
                     </li>
                     <li v-else-if="roleName === 'super-admin'">
@@ -262,10 +280,13 @@
                         class="header__login__info__item"
                         to="/dashboard"
                       >
-                        <img
+                        <NuxtImg
                           alt="profile"
-                          src="~/assets/header/profile.svg"
-                        /><span>{{ $t("Profile") }}</span>
+                          src="/images/header/profile.svg"
+                          width="24"
+                          height="24"
+                        />
+                        <span>{{ $t("Profile") }}</span>
                       </NuxtLink>
                     </li>
                     <li v-else-if="!is_company">
@@ -273,18 +294,24 @@
                         class="header__login__info__item"
                         to="/user-profile"
                       >
-                        <img
+                        <NuxtImg
                           alt="profile"
-                          src="~/assets/header/profile.svg"
-                        /><span>{{ $t("Profile") }}</span>
+                          src="/images/header/profile.svg"
+                          width="24"
+                          height="24"
+                        />
+                        <span>{{ $t("Profile") }}</span>
                       </NuxtLink>
                     </li>
                     <li v-else>
                       <NuxtLink class="header__login__info__item" to="/profile">
-                        <img
+                        <NuxtImg
                           alt="profile"
-                          src="~/assets/header/profile.svg"
-                        /><span>{{ $t("Profile") }}</span>
+                          src="/images/header/profile.svg"
+                          width="24"
+                          height="24"
+                        />
+                        <span>{{ $t("Profile") }}</span>
                       </NuxtLink>
                     </li>
 
@@ -295,10 +322,11 @@
                       @click="loginAs"
                     >
                       <NuxtLink class="header__login__info__item" to="/">
-                        <img
+                        <NuxtImg
                           alt="login-as"
-                          src="~/assets/header/go-to.svg"
-                        /><span>{{ $t("Personal Profile") }}</span>
+                          src="/images/header/go-to.svg"
+                        />
+                        <span>{{ $t("Personal Profile") }}</span>
                       </NuxtLink>
                     </li>
 
@@ -307,19 +335,25 @@
                       @click="loginAs"
                     >
                       <NuxtLink class="header__login__info__item" to="/">
-                        <img
+                        <NuxtImg
                           alt="login-as"
-                          src="~/assets/header/go-to.svg"
-                        /><span>{{ $t("Company Account") }}</span>
+                          src="/images/header/go-to.svg"
+                          width="24"
+                          height="24"
+                        />
+                        <span>{{ $t("Company Account") }}</span>
                       </NuxtLink>
                     </li>
 
                     <li @click="logOut">
                       <NuxtLink class="header__login__info__item" to="/">
-                        <img
+                        <NuxtImg
                           alt="logout"
-                          src="~/assets/header/logout.svg"
-                        /><span>{{ $t("LogOut") }}</span>
+                          src="/images/header/logout.svg"
+                          width="24"
+                          height="24"
+                        />
+                        <span>{{ $t("LogOut") }}</span>
                       </NuxtLink>
                     </li>
                   </ul>
@@ -370,7 +404,7 @@
         </button>
         <div class="header-mobile__logo">
           <NuxtLink to="/">
-            <img alt="logo" src="~/assets/logo-mobile.svg" />
+            <NuxtImg alt="logo" src="/images/logo-mobile.svg" />
           </NuxtLink>
         </div>
         <div v-if="userInfo === undefined" class="header-mobile__info">
@@ -412,7 +446,7 @@
             </p>
           </div>
 
-          <img
+          <NuxtImg
             v-else
             :src="getCompanyLogo"
             :style="{ cursor: 'pointer' }"
@@ -425,7 +459,12 @@
             class="wrap__right--chat"
             @click="goToChat(true)"
           >
-            <img :src="icons.chats" alt="chat" />
+            <NuxtImg
+              src="/images/company/chats.svg"
+              alt="chat"
+              width="25"
+              height="24"
+            />
             <div
               v-if="!!notificationCount"
               class="wrap__right--chat--notification"
@@ -442,7 +481,7 @@
               class="header__login__info__profile-user"
               @click="switchToProfile"
             >
-              <img
+              <NuxtImg
                 :src="getCompanyLogo"
                 alt=""
                 class="header__login__info__avatar"
@@ -462,9 +501,8 @@
               @click="loginAs"
             >
               <div class="login-as">
-                <img alt="logout" src="~/assets/header/go-to.svg" /><span>{{
-                  $t("Personal Profile")
-                }}</span>
+                <NuxtImg alt="logout" src="/images/header/go-to.svg" />
+                <span>{{ $t("Personal Profile") }}</span>
               </div>
             </div>
 
@@ -473,9 +511,8 @@
               @click="loginAs"
             >
               <div class="login-as">
-                <img alt="logout" src="~/assets/header/go-to.svg" /><span>{{
-                  $t("Company Account")
-                }}</span>
+                <NuxtImg alt="logout" src="/images/header/go-to.svg" />
+                <span>{{ $t("Company Account") }}</span>
               </div>
             </div>
           </div>
@@ -500,7 +537,7 @@
                 @keyup.enter="searchCompanyMobile"
               >
                 <template #prepend-inner>
-                  <img alt="lens" :src="icons.lensGreen" />
+                  <NuxtImg alt="lens" src="images/chat/lens-green.svg" />
                 </template>
                 <template #append-inner>
                   <v-icon @click="clearSearch">mdi-close</v-icon>
@@ -540,28 +577,18 @@
 
 <script>
 import { useCookies } from "vue3-cookies";
-import CustomButton from "~/src/components/Reusable/CustomButton.vue";
 import { useI18n } from "vue-i18n";
 //закоментовано поки стор не доступний
 // import { useLogin } from '~/stores/loginStore';
 // import { companyEvent, companyName, useCompanyStore } from '~/stores/companyStore';
-import AnimationBlock from "~/src/components/Reusable/AnimationBlock.vue";
 // import { useChatStore } from '~/stores/chatStore';
-import chats from "~/assets/company/chats.svg";
-import lensGreen from "~/assets/chat/lens-green.svg";
-import ContainerComponent from "~/src/components/Reusable/ContainerComponent.vue";
 
 const { cookies } = useCookies();
 
 export default {
   name: "HeaderMenu",
-  components: { ContainerComponent, AnimationBlock, CustomButton },
   data() {
     return {
-      icons: {
-        chats,
-        lensGreen,
-      },
       show: false,
       defaultLang: true,
       // companyStore: useCompanyStore(),
@@ -691,7 +718,7 @@ export default {
     },
     getCompanyLogo() {
       // return this.userInfo?.user.companyLogo || this.userInfo?.user.avatar;
-      return "/assets/company/logo-company.svg"; // Temporary hardcoded value
+      return "/images/company/logo-company.svg"; // Temporary hardcoded value
     },
   },
   async mounted() {
@@ -878,8 +905,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/main.scss";
-
 .loader-lang {
   position: absolute;
   top: 0;

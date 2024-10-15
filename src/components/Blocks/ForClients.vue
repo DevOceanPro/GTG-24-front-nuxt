@@ -30,7 +30,6 @@
 
 <script setup>
 import { defineProps } from "vue";
-import ContainerComponent from "~/src/components/Reusable/ContainerComponent.vue";
 
 const props = defineProps({
   object: {
@@ -43,14 +42,14 @@ const props = defineProps({
 <style lang="scss" scoped>
 .content {
   position: relative;
-  background-image: url(@/assets/home/banner-for-companies.jpg);
+  background-image: url(public/images/home/banner-for-companies.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   border-radius: 20px;
   overflow: hidden;
   @media (max-width: 768px) {
-    background-image: url(@/assets/home/banner-for-companies.jpg);
+    background-image: url(public/images/home/banner-for-companies.jpg);
   }
 
   &::after {

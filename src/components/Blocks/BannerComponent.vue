@@ -56,8 +56,6 @@ import "swiper/css/pagination";
 
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Autoplay, Pagination } from "swiper/modules";
-import CustomButton from "~/src/components/Reusable/CustomButton.vue";
-import ContainerComponent from "~/src/components/Reusable/ContainerComponent.vue";
 
 const props = defineProps({
   statisticBanners: {

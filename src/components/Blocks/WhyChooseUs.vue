@@ -10,7 +10,11 @@
           </div>
           <ul class="content-left__list">
             <li class="content-left__item">
-              <img class="icon" src="@/assets/home/energy.svg" alt="energy" />
+              <NuxtImg
+                class="icon"
+                src="/images/home/energy.svg"
+                alt="energy"
+              />
               <div class="info">
                 <p class="info__title">{{ $t("WhyWeeChooseUl1") }}</p>
                 <p class="info__text">
@@ -19,9 +23,9 @@
               </div>
             </li>
             <li class="content-left__item">
-              <img
+              <NuxtImg
                 class="icon"
-                src="@/assets/home/technical.svg"
+                src="/images/home/technical.svg"
                 alt="technical"
               />
               <div class="info">
@@ -132,9 +136,9 @@
         <div class="content-right">
           <p>{{ $t("belive") }}</p>
           <form class="form" @submit.prevent="handleSubmit">
-            <img
+            <NuxtImg
               class="form-bg-element"
-              src="@/assets/home/form-bg.svg"
+              src="/images/home/form-bg.svg"
               alt="bg-element"
             />
             <div class="form__title">{{ $t("ContactUs") }}</div>
@@ -298,8 +302,6 @@
 </template>
 
 <script setup>
-import CustomButton from "~/src/components/Reusable/CustomButton.vue";
-import ContainerComponent from "~/src/components/Reusable/ContainerComponent.vue";
 // import useContactUs from "@/stores/contactUsStore"; // закоментовано поки стор не доступний
 
 const props = defineProps(["homePageStatistic"]);
@@ -334,8 +336,6 @@ const handleSubmit = async () => {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/main.scss";
-
 .why-choose-us {
   position: relative;
   padding-top: 40px;

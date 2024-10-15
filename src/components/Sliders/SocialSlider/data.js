@@ -1,8 +1,8 @@
 // link-icons
-import youtubeIcon from "../../../../../GTG-24-front/src/assets/social-media/youtube.svg";
-import twitterIcon from "../../../../../GTG-24-front/src/assets/social-media/twitter.svg";
-import facebookIcon from "../../../../../GTG-24-front/src/assets/social-media/facebook.svg";
-import instagramIcon from "../../../../../GTG-24-front/src/assets/social-media/instagram.svg";
+import youtubeIcon from "/images/social-media/youtube.svg";
+import twitterIcon from "/images/social-media/twitter.svg";
+import facebookIcon from "/images/social-media/facebook.svg";
+import instagramIcon from "/images/social-media/instagram.svg";
 
 export const socialLinks = [
   { id: 1, icon: youtubeIcon, text: "YouTube", to: "" },

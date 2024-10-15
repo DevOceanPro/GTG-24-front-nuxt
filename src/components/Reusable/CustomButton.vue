@@ -52,8 +52,6 @@ defineProps({
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/main.scss";
-
 .btn {
   text-transform: none;
 }

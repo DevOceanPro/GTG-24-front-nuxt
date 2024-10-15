@@ -1,26 +1,26 @@
 <template>
   <div class="title-bar">
     <div class="overlay" />
-    <img
+    <NuxtImg
       v-if="variant === 'one'"
-      src="@/assets/about-us/title-bar.jpg"
+      src="/images/about-us/title-bar.jpg"
       alt="image"
     />
-    <img
+    <NuxtImg
       v-else-if="variant === 'two'"
-      src="@/assets/contact-us.png"
+      src="/images/contact-us.png"
       alt="image"
     />
-    <img
+    <NuxtImg
       v-else-if="variant === 'three'"
-      src="@/assets/terms-of-use.png"
+      src="/images/terms-of-use.png"
       alt="image"
     />
-    <img v-else src="@/assets/impressum.png" alt="image" />
+    <NuxtImg v-else src="/images/impressum.png" alt="image" />
     <div class="container">
       <h4 class="title-bar__title">{{ page }}</h4>
       <div class="title-bar__way">
-        <router-link :to="{ name: 'home' }">{{ $t("HomePage") }}</router-link>
+        <NuxtLink :to="{ name: 'home' }">{{ $t("HomePage") }}</NuxtLink>
         <i class="icon-chevron-top" />
         <p>{{ page }}</p>
       </div>
@@ -31,7 +31,6 @@
 <script>
 export default {
   name: "TitleBar",
-  components: {},
   props: {
     page: {
       type: String,
@@ -41,9 +40,6 @@ export default {
       type: String,
       required: true,
     },
-  },
-  data() {
-    return {};
   },
 };
 </script>
@@ -58,10 +54,12 @@ export default {
   @media (max-width: 991px) {
     padding: 28px 40px;
   }
+
   img {
     position: absolute;
     top: -280px;
     width: 100%;
+    height: auto;
     @media (max-width: 991px) {
       top: -30px;
     }

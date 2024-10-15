@@ -1,7 +1,7 @@
 <template>
   <div class="blog-item">
     <div class="blog-item__first" style="position: relative">
-      <img
+      <NuxtImg
         height="220"
         class="blog-item__image user-select-none"
         :src="post.card_image"
@@ -14,7 +14,7 @@
             class="blog-item__hover__circle__link user-select-none"
             @click="navigateToPost(post.slug)"
           >
-            <img :src="showMoreIcon" />
+            <NuxtImg :src="showMoreIcon" alt="show more" />
             <span>Show</span>
           </div>
         </div>
@@ -31,7 +31,7 @@
 
 <script setup>
 import { useRouter } from "vue-router";
-import showMore from "@/assets/show-more.svg";
+import showMoreIcon from "public/images/show-more.svg";
 
 const props = defineProps({
   post: {
@@ -40,7 +40,6 @@ const props = defineProps({
   },
 });
 
-const showMoreIcon = showMore;
 const router = useRouter();
 
 const navigateToPost = (slug) => {
@@ -49,8 +48,6 @@ const navigateToPost = (slug) => {
 </script>
 
 <style scoped lang="scss">
-@import "@/assets/styles/main.scss";
-
 .blog-item {
   width: 400px;
   min-height: 298px;

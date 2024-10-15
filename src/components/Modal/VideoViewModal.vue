@@ -12,9 +12,9 @@
               <source :src="currentVideo" type="video/mp4" />
             </video>
           </template>
-          <img
+          <NuxtImg
             v-if="isPlugVideo"
-            src="@/assets/video-placeholder.png"
+            src="/images/video-placeholder.png"
             alt="video-img"
           />
           <button
@@ -42,13 +42,9 @@
 
 <script>
 import * as assert from "assert";
-import CustomModal from "~/src/components/Reusable/CustomModal.vue";
 
 export default {
   name: "VideoViewModal",
-  components: {
-    CustomModal,
-  },
   data() {
     return {
       isPlugVideo: true,
@@ -83,8 +79,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "@/assets/styles/main.scss";
-
 .video-modal {
   position: fixed;
   top: 0px;

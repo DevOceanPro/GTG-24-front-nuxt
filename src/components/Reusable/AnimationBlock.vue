@@ -11,8 +11,6 @@ const props = defineProps({
 </script>
 
 <style scoped lang="scss">
-@import "@/assets/styles/main.scss";
-
 .anim {
   display: flex;
   justify-content: center;
@@ -29,7 +27,7 @@ const props = defineProps({
   background-repeat: no-repeat;
   background-size: contain !important;
   width: 100px;
-  background: url("@/assets/logo.svg");
+  background: url("public/images/logo.svg");
   background-repeat: no-repeat !important;
   transform: scale(1);
   animation: pulse 2s infinite;

@@ -10,10 +10,7 @@
   </div>
 </template>
 
-<script setup>
-import BlogSlider from "~/src/components/Blog/BlogSlider.vue";
-import ContainerComponent from "~/src/components/Reusable/ContainerComponent.vue";
-</script>
+<script setup></script>
 
 <style lang="scss" scoped>
 .our-opportunities {
