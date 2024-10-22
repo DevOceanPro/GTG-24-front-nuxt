@@ -1,11 +1,11 @@
 <template>
-  <div class="faq">
+  <section class="faq" aria-labelledby="faq-title">
     <ContainerComponent>
-      <h4 class="faq__title">{{ $t("GeneralQuestions") }}</h4>
+      <h2 id="faq-title" class="faq__title">{{ $t("GeneralQuestions") }}</h2>
       <ul class="faq__columns">
         <li class="faq__col">
-          <ul class="faq__list">
-            <li
+          <dl class="faq__list">
+            <div
               v-for="(question, index) in generalQuestions.slice(0, 5)"
               :key="index"
               class="faq__item"
@@ -21,15 +21,15 @@
                 <h5>{{ $t(`q${index + 1}`) }}</h5>
                 <i class="icon-chevron-down" />
               </div>
-              <p class="faq__item__text" :class="{ active2: question.active }">
+              <dd class="faq__item__text" :class="{ active2: question.active }">
                 {{ $t(`a${index + 1}`) }}
-              </p>
-            </li>
-          </ul>
+              </dd>
+            </div>
+          </dl>
         </li>
         <li class="faq__col">
-          <ul class="faq__list">
-            <li
+          <dl class="faq__list">
+            <div
               v-for="(question, index) in generalQuestions.slice(5)"
               :key="index + 5"
               class="faq__item"
@@ -45,33 +45,26 @@
                 <h5>{{ $t(`q${index + 6}`) }}</h5>
                 <i class="icon-chevron-down" />
               </div>
-              <p class="faq__item__text" :class="{ active2: question.active }">
+              <dd class="faq__item__text" :class="{ active2: question.active }">
                 {{ $t(`a${index + 6}`) }}
-              </p>
-            </li>
-          </ul>
+              </dd>
+            </div>
+          </dl>
         </li>
       </ul>
     </ContainerComponent>
-  </div>
+  </section>
 </template>
 
-<script>
-export default {
-  name: "FAQ",
-  data() {
-    return {
-      generalQuestions: Array(6)
-        .fill()
-        .map(() => ({ active: false })),
-    };
-  },
-  methods: {
-    toggleClass(index) {
-      this.generalQuestions[index].active =
-        !this.generalQuestions[index].active;
-    },
-  },
+<script setup>
+import { ref } from "vue";
+
+const generalQuestions = ref(
+  Array.from({ length: 6 }, () => ({ active: false })),
+);
+
+const toggleClass = (index) => {
+  generalQuestions.value[index].active = !generalQuestions.value[index].active;
 };
 </script>
 

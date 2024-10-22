@@ -16,7 +16,10 @@
             :key="itemIndex"
             class="footer__list"
           >
-            <h4>{{ item.title }}</h4>
+            <h4>
+              {{ item.title }}
+              <span />
+            </h4>
             <ul>
               <li v-for="(itemList, listIndex) in item.list" :key="listIndex">
                 <router-link v-if="!itemList.target" :to="itemList.url">
@@ -352,22 +355,20 @@ watchEffect(() => {
       @include flex(row, flex-start, center);
       gap: 10px;
       margin-bottom: 32px;
+
+      color: $white;
+      font-family: $font-main;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 28.8px;
+
       @media (max-width: 991px) {
         position: relative;
         margin-bottom: 16px;
         display: inline-block;
-      }
 
-      p {
-        color: $white;
-        font-family: $font-main;
         font-size: 20px;
-        font-weight: 700;
-        line-height: 28.8px;
-        @media (max-width: 991px) {
-          font-size: 20px;
-          text-align: center;
-        }
+        text-align: center;
       }
 
       span {

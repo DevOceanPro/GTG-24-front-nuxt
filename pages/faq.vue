@@ -8,7 +8,9 @@
 <script setup>
 import { useHead } from "@unhead/vue";
 
-useHead({ title: "GTG 24" });
+useHead({
+  title: "GTG 24",
+});
 </script>
 
 <style lang="scss" scoped></style>
